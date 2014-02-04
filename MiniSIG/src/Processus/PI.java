@@ -4,12 +4,10 @@ import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-
 import CAD.Mapping;
 
 
@@ -42,7 +40,9 @@ public class PI extends JButton{
 	        }
 	        public void mousePressed(MouseEvent e) {}
 	        public void mouseReleased(MouseEvent e) {}
-	        public void mouseEntered(MouseEvent e) {}
+	        public void mouseEntered(MouseEvent e) {
+	        	Survol_PI();
+	        }
 	        public void mouseExited(MouseEvent e) {}
 	    });
 	}
@@ -100,6 +100,10 @@ public class PI extends JButton{
 		this.panel = new JPanel();
 		
 		
+				
+	}
+	
+	public void Survol_PI(){
 		
 		
 	}
