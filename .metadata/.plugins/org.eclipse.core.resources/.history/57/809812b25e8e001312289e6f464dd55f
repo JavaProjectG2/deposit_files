@@ -107,7 +107,7 @@ public class PI extends JButton{
 		panel2.text_field_libelle.setText(Libelle);
 		panel2.texte_area_texte_court.setText(TexteCourt);
 		panel2.text_area_description.setText(Description);
-/* Ajouter l'image*/
+		panel2.pan_image.setBackground();
 		
 				
 	}

@@ -6,8 +6,6 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import CAD.Mapping;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -46,7 +44,7 @@ public class News {
         return ListNews; 
     }
     
-    public void modifyNews(String IDNews, String[] infosNews) { //les infos de infosNews doivent etre dans lordre : Libelle_New, Description_New et presentes comme dans une requete SQL
+    public void modifyNews(String IDNews, String infosNews) { //les infos de infosNews doivent etre dans lordre : Libelle_New, Description_New et presentes comme dans une requete SQL
         map.Update("News", IDNews, infosNews);
     }
     

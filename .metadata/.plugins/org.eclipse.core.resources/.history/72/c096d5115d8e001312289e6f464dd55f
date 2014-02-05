@@ -269,6 +269,8 @@ public class Interface_graphique extends javax.swing.JFrame {
 
     private void menu_item_modif_supp_poiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_modif_supp_poiActionPerformed
         // TODO add your handling code here:
+        Modif_supp_poi msp = new Modif_supp_poi();
+        msp.setVisible(true);
     }//GEN-LAST:event_menu_item_modif_supp_poiActionPerformed
 
     /**
