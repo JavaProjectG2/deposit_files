@@ -1,0 +1,55 @@
+package 
+
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.GridBagConstraints;
+import java.awt.image.BufferedImage;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+
+
+public class fenetre extends JFrame {
+  
+	public fenetre(){
+    this.setTitle("minisig");
+    this.setSize(1920, 1080);
+    this.setLocationRelativeTo(null);
+    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);             
+    this.setVisible(true);
+    JPanel Panel1 = new JPanel();
+    
+    Panel Panel2 = new Panel();
+    this.setContentPane(Panel1);                  
+    
+    Panel2.setPreferredSize(new Dimension(500,400));
+    Panel1.add(Panel2);
+
+    
+    this.setContentPane(Panel1);
+    
+  }
+  
+  public void creerEtAfficherFenetre(final BufferedImage image) {
+      fenetre fenetre = new fenetre();
+       
+      fenetre.add(new JPanel() {
+
+          public void paintComponent(Graphics g) {
+              g.drawImage(image, 0, 0, null);
+          }
+           
+        
+          {
+              setPreferredSize(
+                      new Dimension(700, 500));
+          }
+      }, BorderLayout.CENTER);
+       
+      fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      fenetre.pack();
+       
+      fenetre.setVisible(true);
+}
+}

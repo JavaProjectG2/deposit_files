@@ -4,10 +4,12 @@ import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
+
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+
 import CAD.Mapping;
 
 
@@ -22,6 +24,7 @@ public class PI extends JButton{
 	private String Description;
 	private JPanel panel;
 	private Mapping mappingsql = new Mapping();
+	private carte carte = new carte();
 	
 	public PI(){
 		try {
