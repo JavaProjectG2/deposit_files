@@ -7,7 +7,6 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import CAD.Mapping;
 
@@ -85,18 +84,14 @@ public class Lieu extends JButton{
 
 	public void Consulter_Lieu(){
 		this.panel = new JPanel();
-	
-		carte.AfficherCarte(ID_Map);
+		
 		
 				
 	}
 	
 	public void Survol_Lieu(){
-		panel = new JPanel();
-		JLabel label_PI = new JLabel();
-		label_PI.setText(this.Libelle);
-		panel.add(label_PI);
-		carte.ActionPOI(Abscisse,Ordonee,panel);
+		
+		
 	}
 	
 	public void Ajouter_Lieu(int ID_Map){
@@ -111,7 +106,8 @@ public class Lieu extends JButton{
 		champs[0]=this.Libelle;
 		champs[1]=String.valueOf(this.Abscisse);
 		champs[2]=String.valueOf(this.Ordonee);
-		champs[3]=String.valueOf(ID_Map);
+		champs[4]=String.valueOf(Rayon);
+		champs[3]=String.valueOf(ID_Map);		
 			
 		mappingsql.Insert("lieu", nomCol, champs);
 	}
