@@ -5,23 +5,38 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.awt.Color; 
+
+import javax.swing.BoxLayout;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
 
 import CAD.Mapping;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
  *
  * @author Dustdevil
  */
+
 public class News {
     
     Mapping map = new Mapping();
     ResultSet result;
+    
+    //creation jpanel contenant toutes les news sous la forme de liens hypertextes
+    public void DisplayPanelNews() throws SQLException {
+    	JPanel panNews = new JPanel();
+    	
+    	panNews.setLayout(new BoxLayout(panNews, BoxLayout.PAGE_AXIS));
+    	
+    	ArrayList<String> ListNews = ConsultNews();
+    	
+    	for(String element : ListNews) {
+    		JLabel labNews = new JLabel(element);
+    		panNews.add(labNews);
+    	}
+    }
     
     public void AddNews(String[] infosNews) { //les informations dans infosNews doivent etre dans lordre : Libelle_New, Description_New
         String[] nomCol = new String[2];
