@@ -15,7 +15,7 @@ public class Mapping
     
     //requete INSERT
     public void Insert(String nomTable, String[] nomCol, String[] champs) {
-        this.rq_sql  = "INSERT INTO `"+nomTable+"` ('"; 
+        this.rq_sql  = "INSERT INTO `"+nomTable+"` ('";
         
         for (String col : nomCol) {
             this.rq_sql += col+"', '";
