@@ -6,7 +6,10 @@ public class Historique{
 		 
 	 }
 	 public void AjouterHisto(){
-
+		 
+		 News news1 = new News();
+		 
+		 news1.
 		 
 	 }
 	

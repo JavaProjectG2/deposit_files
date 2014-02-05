@@ -18,8 +18,7 @@ public class Lieu extends JButton{
 	private double Abscisse;
 	private double Ordonee;
 	private String Libelle;
-	private int Zoom;
-	private int ID_Map;
+	private int Rayon;
 	private JPanel panel;
 	private Mapping mappingsql = new Mapping();
 	
@@ -65,12 +64,6 @@ public class Lieu extends JButton{
 	public JPanel getpanel(){
 		return panel;
 	}
-	public void setID_Map(int ID_Map){
-		this.ID_Map=ID_Map;
-	}
-	public int getID_Map(){
-		return ID_Map;
-	}
 	public void setOrdonee(double Ordonee){
 		this.Ordonee = Ordonee;
 	}
@@ -83,11 +76,11 @@ public class Lieu extends JButton{
 	public String getLibelle(){
 		return Libelle;
 	}
-	public void setZoom(int Zoom){
-		this.Zoom = Zoom;
+	public void setRayon(int Rayon){
+		this.Rayon = Rayon;
 	}
-	public int getZoom(){
-		return Zoom;
+	public int getRayon(){
+		return Rayon;
 	}
 
 	public void Consulter_Lieu(){
@@ -95,6 +88,7 @@ public class Lieu extends JButton{
 	
 		carte.AfficherCarte(ID_Map);
 		
+				
 	}
 	
 	public void Survol_Lieu(){

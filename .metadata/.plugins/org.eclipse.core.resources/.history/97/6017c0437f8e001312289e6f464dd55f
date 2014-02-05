@@ -20,8 +20,8 @@ import CAD.Mapping;
  */
 public class News {
     
-    private Mapping map = new Mapping();
-    private ResultSet result;
+    Mapping map = new Mapping();
+    ResultSet result;
     
     public void AddNews(String[] infosNews) { //les informations dans infosNews doivent etre dans lordre : Libelle_New, Description_New
         String[] nomCol = new String[2];
