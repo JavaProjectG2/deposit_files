@@ -4,11 +4,13 @@ import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
+
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
 import CAD.Mapping;
 import Interface.pan_consulter_poi;
 
@@ -137,7 +139,7 @@ public class PI extends JButton{
 		champs[4]=String.valueOf(this.Ordonee);
 		champs[5]=this.ImagePI;
 		champs[6]=String.valueOf(ID_Lieu);		
-		
+			
 		mappingsql.Insert("interet", nomCol, champs);
 	}
 	
