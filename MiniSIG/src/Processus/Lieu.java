@@ -101,14 +101,13 @@ public class Lieu extends JButton{
 		nomCol[0]="Libelle_Lieu";
 		nomCol[1]="X_Lieu";
 		nomCol[2]="Y_Lieu";
-		nomCol[3]="Rayon_Lieu";
-		nomCol[4]="ID_Map";
+		nomCol[3]="ID_Map";
 		
 		champs[0]=this.Libelle;
 		champs[1]=String.valueOf(this.Abscisse);
 		champs[2]=String.valueOf(this.Ordonee);
-		champs[3]=String.valueOf(Rayon);
-		champs[4]=String.valueOf(ID_Map);		
+		champs[4]=String.valueOf(Rayon);
+		champs[3]=String.valueOf(ID_Map);		
 			
 		mappingsql.Insert("lieu", nomCol, champs);
 	}
@@ -123,8 +122,7 @@ public class Lieu extends JButton{
 		champs[0]="Libelle_Lieu=\'" + this.Libelle + "\',";
 		champs[1]="X_Lieu=\'" + String.valueOf(this.Abscisse) + "\',";
 		champs[2]="Y_Lieu=\'" + String.valueOf(this.Ordonee) + "\',";
-		champs[3]="Rayon_Lieu=\'" + String.valueOf(this.Rayon) + "\',";
-		champs[4]="ID_Map=\'" + String.valueOf(ID_Lieu) + "\'";		
+		champs[3]="ID_Map=\'" + String.valueOf(ID_Lieu) + "\'";		
 		
 		mappingsql.Update("lieu", "ID_Lieu=\'" + ID_Lieu +"\'", champs);
 		

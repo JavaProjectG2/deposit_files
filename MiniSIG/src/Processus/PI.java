@@ -8,9 +8,11 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import CAD.Mapping;
+import Interface.pan_consulter_poi;
 
 
 public class PI extends JButton{
@@ -62,10 +64,10 @@ public class PI extends JButton{
 	public double getAbscisse(){
 		return Abscisse;
 	}
-	public void setpanel(JPanel panel){
+	public void setpanel(pan_consulter_poi panel){
 		this.panel = panel;
 	}
-	public JPanel getpanel(){
+	public pan_consulter_poi getpanel(){
 		return panel;
 	}
 	public void setOrdonee(double Ordonee){
@@ -100,15 +102,19 @@ public class PI extends JButton{
 	}
 	
 	public void Consulter_PI(){
-		this.panel = new JPanel();
-		
+		panel = new pan_consulter_poi();
+		panel.bu
+		carte
 		
 				
 	}
 	
 	public void Survol_PI(){
-		
-		
+		panel = new JPanel();
+		JLabel label_PI = new JLabel();
+		label_PI.setText(this.Libelle);
+		panel.add(label_PI);
+		carte.ActionPOI(Abscisse,Ordonee,panel);
 	}
 	
 	public void Ajouter_PI(int ID_Lieu){

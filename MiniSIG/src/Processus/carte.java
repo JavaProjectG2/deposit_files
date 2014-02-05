@@ -28,7 +28,8 @@ public class carte {
 	 private boolean updateImage;
 	 private  Image gridImage ;
 	 
-	 
+	 public carte()
+	 {}
 	 public carte(int nw,int nh,int w,int h ,double X3,double X4, double Y3,double Y4, String img) 
 	 {
 		 double X1 = X3 ;

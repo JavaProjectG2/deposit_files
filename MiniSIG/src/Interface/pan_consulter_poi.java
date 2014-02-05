@@ -4,7 +4,10 @@
  * and open the template in the editor.
  */
 
-package javaig;
+package Interface;
+
+import javax.swing.JButton;
+
 
 /**
  *
@@ -12,12 +15,14 @@ package javaig;
  */
 public class pan_consulter_poi extends javax.swing.JPanel {
 
-    /**
-     * Creates new form pan_consulter_poi
-     */
+	public JButton getbutton_modifier(){
+		return button_modifier;
+	}
+    public void setbutton_modifier(JButton button_modifier){
+    	this.button_modifier =button_modifier;
+    }
     public pan_consulter_poi() {
         initComponents();
-        label_libelle.setText();
     }
 
     /**
@@ -27,25 +32,13 @@ public class pan_consulter_poi extends javax.swing.JPanel {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    public void initComponents() {
 
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        pan_image = new javax.swing.JPanel();
-        text_field_libelle = new javax.swing.JTextField();
-        pan_texte_court = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        texte_area_texte_court = new javax.swing.JTextArea();
-        pan_description = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        text_area_description = new javax.swing.JTextArea();
-        button_modifier = new javax.swing.JButton();
-        button_supprimer = new javax.swing.JButton();
 
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
         jScrollPane2.setViewportView(jTextArea2);
-
+        
         javax.swing.GroupLayout pan_imageLayout = new javax.swing.GroupLayout(pan_image);
         pan_image.setLayout(pan_imageLayout);
         pan_imageLayout.setHorizontalGroup(
@@ -143,17 +136,17 @@ public class pan_consulter_poi extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton button_modifier;
-    private javax.swing.JButton button_supprimer;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JPanel pan_description;
-    private javax.swing.JPanel pan_image;
-    private javax.swing.JPanel pan_texte_court;
-    private javax.swing.JTextArea text_area_description;
-    private javax.swing.JTextField text_field_libelle;
-    private javax.swing.JTextArea texte_area_texte_court;
+    private JButton button_modifier = new JButton();
+    public javax.swing.JButton button_supprimer = new javax.swing.JButton();
+    public javax.swing.JScrollPane jScrollPane1 = new javax.swing.JScrollPane();
+    public javax.swing.JScrollPane jScrollPane2 = new javax.swing.JScrollPane();
+    public javax.swing.JScrollPane jScrollPane3 = new javax.swing.JScrollPane();
+    public javax.swing.JTextArea jTextArea2 = new javax.swing.JTextArea();
+    public javax.swing.JPanel pan_description = new javax.swing.JPanel();
+    public javax.swing.JPanel pan_image = new javax.swing.JPanel();
+    public javax.swing.JPanel pan_texte_court = new javax.swing.JPanel();
+    public javax.swing.JTextArea text_area_description = new javax.swing.JTextArea();
+    public javax.swing.JTextField text_field_libelle = new javax.swing.JTextField();
+    public javax.swing.JTextArea texte_area_texte_court = new javax.swing.JTextArea();
     // End of variables declaration//GEN-END:variables
 }
