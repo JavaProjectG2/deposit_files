@@ -95,7 +95,7 @@ public class Map extends javax.swing.JPanel {
 	public void SelectionPI(int x1 , int y1 , int x2 , int y2 )
 	{
 				
-		rs = mpg.Select("*", "PI" , "(PI.x between "+x1+" and "+y1+") AND (PI.y betwenn "+x1+" and "+x2+")" ) ;
+		rs = mpg.Select("ID_Interet, Libelle_Interet, TexteCourt_Interet, Description_Interet, X_Interet, Y_Interet, Image_Interet", "PI" , "(PI.x between "+x1+" and "+y1+") AND (PI.y betwenn "+x1+" and "+x2+")" ) ;
 		
 			
 			
@@ -112,9 +112,14 @@ public class Map extends javax.swing.JPanel {
 						
 						
 						list_PI.add(rs.getInt(1),new PI());
-						list_PI.get(rs.getInt(1)).setAbscisse(rs.getDouble(2));
+						list_PI.get(rs.getInt(1)).setLibelle(rs.getString(2));
 						list_PI.get(rs.getInt(1)).setId_PI(rs.getInt(1));
-						list_PI.get(rs.getInt(1)).setOrdonee(rs.getDouble(3));
+						list_PI.get(rs.getInt(1)).setTexteCourt(rs.getString(3));
+						list_PI.get(rs.getInt(1)).setDescription(rs.getString(4));
+						list_PI.get(rs.getInt(1)).setAbscisse(rs.getDouble(5));
+						list_PI.get(rs.getInt(1)).setOrdonee(rs.getDouble(6));
+						list_PI.get(rs.getInt(1)).setImage(rs.getString(7));
+						list_PI.get(rs.getInt(1)).setTexteCourt(rs.getString(3));
 						
 						int[] coord = new int[2];
 						coord = carteactu.calculcoordpoint(list_PI.get(rs.getInt(1)).getId_PI(),img , list_PI.get(rs.getInt(1)).getAbscisse(), list_PI.get(rs.getInt(1)).getOrdonee());
@@ -124,9 +129,8 @@ public class Map extends javax.swing.JPanel {
 						panelPI.add(rs.getInt(1), new JPanel());
 						panelPI.get(rs.getInt(1)).add(list_PI.get(rs.getInt(1)));
 						panelPI.get(rs.getInt(1)).setVisible(true);	
-						panelPI.get(rs.getInt(1)).setLocation( coord[0], coord[1]);
 						add(panelPI.get(rs.getInt(1)));
-						
+						panelPI.get(rs.getInt(1)).setLocation( coord[0], coord[1]);
 						i++;
 						
 					} catch (SQLException e) {
