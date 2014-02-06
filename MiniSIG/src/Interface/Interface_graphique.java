@@ -339,12 +339,12 @@ public class Interface_graphique extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-         int largeur = 760;
+        /* int largeur = 760;
         int longueur = 540;
         Map map = new Map(largeur,longueur,"arras2.png");
         map.setLayout(null);
         pan_map.add(map);
-        map.setVisible(true);
+        map.setVisible(true);*/
         
     }//GEN-LAST:event_formWindowOpened
 
@@ -392,20 +392,37 @@ public class Interface_graphique extends javax.swing.JFrame {
             public void run() {
                 try{
                     new Interface_graphique().setVisible(true);
+                    System.out.println("interface chargé");
+                    
+               
                 }
                 catch(Exception e){
                     
                 }
                 try{
-                int largeur = 760;
-                int longueur = 540;
+                    
+               /* int largeur = 700;
+                int longueur = 500;
                 Map map = new Map(largeur,longueur,"arras2.png");
                 map.setLayout(null);
                 pan_map.add(map);
                 map.setVisible(true);
+                System.out.println("map chargé");*/
+                
                 }
+                
                 catch(Exception e){
                     
+                }
+                
+                try{
+                    JButton button = new JButton();
+                    pan_map.add(button);
+                    System.out.println("bouton chargé");
+                }
+                
+                catch(Exception e){
+                
                 }
             }
         });
