@@ -26,7 +26,6 @@ public class PI extends JButton{
 	private pan_consulter_poi panel2;
 	private Mapping mappingsql = new Mapping();
 	private carte carte = new carte();
-	private Historique histo = new Historique();
 	
 	public PI(){
 		try {
@@ -102,8 +101,6 @@ public class PI extends JButton{
 	}
 	
 	public void Consulter_PI(){
-		
-		histo.AjouterHisto(Id_PI);
 		panel2 = new pan_consulter_poi();
 		panel2.text_field_libelle.setText(Libelle);
 		panel2.texte_area_texte_court.setText(TexteCourt);
