@@ -53,7 +53,7 @@ public class Mapping
 
     //requete SELECT
     public ResultSet Select(String champ, String table, String Id) {
-        this.rq_sql = "SELECT \'"+champ+"\' FROM \'"+table+"\' WHERE "+Id+"";
+        this.rq_sql = "SELECT "+champ+" FROM "+table+" WHERE "+Id+"";
         
         result = conn.m_GetRows(rq_sql);
         
