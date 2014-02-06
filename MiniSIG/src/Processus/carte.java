@@ -1,6 +1,5 @@
 package Processus;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
@@ -8,11 +7,15 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import CAD.Mapping;
 
 
 
@@ -23,23 +26,26 @@ public class carte {
 	 private double X2 ;
 	 private double Y1 ;
 	 private double Y2 ;
-	 private int w,h ;
-	 private Color[][] grid;
-	 private boolean updateImage;
-	 private  Image gridImage ;
+	 private int zoom ;
+	 private  String image ;
+	 private  ResultSet rs;
+	 private  Mapping mpg;
+	 
 	 
 	 public carte()
-	 {}
-	 public carte(int nw,int nh,int w,int h ,double X3,double X4, double Y3,double Y4, String img) 
 	 {
-		 double X1 = X3 ;
-		 double X2 = X4 ;
-		 double Y1 = Y3 ;
-		 double Y2 = Y4;
-		 String image = img;
 		 
-		 gridImage = new BufferedImage(nw*w,nh*h, 
-				  BufferedImage.TYPE_INT_RGB);
+	 }
+	 
+	 public carte(double X1,double X2, double Y1,double Y2, int zoom, String img) 
+	 {
+		  this.X1 = X1 ;
+		  this.X2 = X2 ;
+		  this.Y1 = Y1 ;
+		  this.Y2 = Y2;
+		 this.zoom = zoom;
+		 this.image = img;
+		 
 	 }
 	 public double getX1()
 	 {
@@ -94,39 +100,116 @@ public class carte {
 	
 	public static void main(String[] args){       
 	                    
-
-		  try{
-			  
-	      Image img = ImageIO.read(new File("arras2.png"));
-	      BufferedImage image = toBufferedImage(img);
-	      
-	      Graphics g = (Graphics)image.getGraphics();
-	        
-		  
+		  String image ="arras2.png";
 		  creerEtAfficherFenetre(image);
 	        
-	       } catch (IOException e) {
-	      e.printStackTrace();
-	       }
+
 	    
 	  }    
 	  
-	  public static BufferedImage toBufferedImage(Image image) {
-	      if( image instanceof BufferedImage ) {
-	              
-	              return( (BufferedImage)image );
-	      } else {
-	  image = new ImageIcon(image).getImage();
-	  
-	  BufferedImage bufferedImage = new BufferedImage( 20,30, BufferedImage.TYPE_INT_RGB );
-	  
-	  return( bufferedImage ) ;
-	}
+
+		public int[] calculcoordpoint(int id_carte , Image image , double x , double y )
+	      {
+	    	 rs = mpg.Select( "*" , "carte" , "id_carte="+id_carte );
+	    	  
+	    	 try {
+	    		 int width = image.getWidth(null);
+		    	 int height = image.getHeight(null);
+		    	double X1 = rs.getDouble(1);
+				double X2 = rs.getDouble(2);
+				double Y1 = rs.getDouble(3);
+				double Y2 = rs.getDouble(4);
+				
+				double X3=X2-X1 ;
+				double fx = height/X3;
+				double X4=x-X1 ;
+				double x_point = fx*X4;
+				
+				double Y3=Y2-Y1 ;
+				double fy = width/Y3;
+				double Y4=Y1 + y ;
+				double y_point = fy*Y4;
+				
+				int[] coord = new int[2] ;
+				int p_x = doubleToInt(x_point);
+				int p_y = doubleToInt(y_point);
+				
+				coord[0] = p_x ;
+				coord[1] = p_y ;
+				
+				
+				return coord;
+					
+				
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	    	  
+			return null;
+	    	  
 	      }
-	      public static void creerEtAfficherFenetre(final BufferedImage image) {
+		
+		public int[] calculcoorduniversel(String image , Image img , double x , double y )
+	      {
+	    	 rs = mpg.Select( "*" , "carte" , "libelle_carte="+image );
+	    	  
+	    	 try {
+	    		 int width = img.getWidth(null);
+		    	 int height = img.getHeight(null);
+		    	double X1 = rs.getDouble(1);
+				double X2 = rs.getDouble(2);
+				double Y1 = rs.getDouble(3);
+				double Y2 = rs.getDouble(4);
+				
+				double X3=X2-X1 ;
+				double fx = X3/height;
+				double X4 = fx*x;
+				double x_point = X1 + X4;
+				
+				double Y3=Y2-Y1 ;
+				double fy = Y3/width;
+				double Y4=fy*y;
+				double y_point = Y2 - Y4 ;
+				
+				int[] coord = new int[2] ;
+				int p_x = doubleToInt(x_point);
+				int p_y = doubleToInt(y_point);
+				
+				coord[0] = p_x ;
+				coord[1] = p_y ;
+				
+				
+				return coord;
+	 		} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	    	  
+			return null;
+	    	  
+	      }
+		
+		
+		
+		
+	      public int doubleToInt(double monDouble) {
+	          long l = Math.round(monDouble);
+	          String s = ""+l;
+	          int i;
+	          try {
+	              i = Integer.parseInt(s);
+	          } catch (NumberFormatException e) {
+	              if (l<0) { i = Integer.MIN_VALUE; } else { i = Integer.MAX_VALUE; }
+	          }
+	          return i;
+	      }
+	      
+		public static void creerEtAfficherFenetre(String image) {
 	          JFrame fenetre = new JFrame("MiniSig");
 	          JPanel Panel2 = new JPanel();
-	          Panel Panel3 = new Panel() ;
+	          Map Panel3 = new Map( 756 , 546 ,image) ;
 	   
 	          Panel3.setLayout(null);
 	          
@@ -156,6 +239,10 @@ public class carte {
 	           
 	          fenetre.setVisible(true);
 	    }
+		public static void ActionPOI(double abscisse, double ordonee,JPanel panel) {
+			// TODO Auto-generated method stub
+			
+		}
 	  
 }
 
