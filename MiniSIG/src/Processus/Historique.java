@@ -23,7 +23,7 @@ public class Historique{
 		
 		results.last();
 		int nbLignes = results.getRow();
-		
+
 		
 		for(int i=1; i<=nbLignes; i++) {
 			String contLigne = results.getNString(i);
