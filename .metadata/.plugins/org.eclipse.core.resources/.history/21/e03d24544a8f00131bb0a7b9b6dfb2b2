@@ -4,7 +4,6 @@ import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
-import java.sql.SQLException;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -107,14 +106,7 @@ public class PI extends JButton{
 	public void Consulter_PI(){
 		
 		histo.AjouterHisto(Id_PI);
-		try {
-				histo.ConsulterHisto();
-			} 
-		catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}	
-
+		histo.ConsulterHisto();
 		panel2 = new form_consulter_poi();
 
 	    panel2.label_description.setText(Description);
@@ -130,7 +122,7 @@ public class PI extends JButton{
 		JLabel label_PI = new JLabel();
 		label_PI.setText(this.Libelle);
 		panel.add(label_PI);
-	//	carte.ActionPOI(Abscisse,Ordonee,panel);
+		carte.ActionPOI(Abscisse,Ordonee,panel);
 	}
 	
 	public void Ajouter_PI(int ID_Lieu){
@@ -161,23 +153,20 @@ public class PI extends JButton{
 	}
 	
 
-	public void Modifier_PI(int Id_PI,String Libelle,String TexteCourt,String Description){
-		String[] champs = new String[3];
+	
+	public void Modifier_PI(int ID_Lieu){
+		String[] champs = new String[7];
 		
-		champs[0]="Libelle_Interet=\'" + Libelle + "\',";
-		champs[1]="TexteCourt_Interet=\'" + TexteCourt + "\',";
-		champs[2]="Description_Interet=\'" + Description + "\'";
-		
-		mappingsql.Update("interet", "ID_Interet=\'" + Id_PI +"\'", champs);
-	}
-	public void Modifier_PI(int Id_PI,String Libelle,String TexteCourt,String Description,String ImagePI){
-		String[] champs = new String[4];
-		
-		champs[0]="Libelle_Interet=\'" + Libelle + "\',";
-		champs[1]="TexteCourt_Interet=\'" + TexteCourt + "\',";
-		champs[2]="Description_Interet=\'" + Description + "\',";
-		champs[3]="Image_Interet=\'" + ImagePI + "\'";		
+		champs[0]="Libelle_Interet=\'" + this.Libelle + "\',";
+		champs[1]="TexteCourt_Interet=\'" + this.TexteCourt + "\',";
+		champs[2]="Description_Interet=\'" + this.Description + "\',";
+		champs[3]="X_Interet=\'" + String.valueOf(this.Abscisse) + "\',";
+		champs[4]="Y_Interet=\'" + String.valueOf(this.Ordonee) + "\',";
+		champs[5]="Image_Interet=\'" + this.ImagePI + "\',";
+		champs[6]="ID_Lieu=\'" + String.valueOf(ID_Lieu) + "\'";		
 		
 		mappingsql.Update("interet", "ID_Interet=\'" + Id_PI +"\'", champs);
+		
 	}
+	
 }

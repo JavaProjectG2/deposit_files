@@ -99,7 +99,7 @@ public class Lieu extends JButton{
 		JLabel label_PI = new JLabel();
 		label_PI.setText(this.Libelle);
 		panel.add(label_PI);
-	//	carte.ActionPOI(Abscisse,Ordonee,panel);
+		carte.ActionPOI(Abscisse,Ordonee,panel);
 	}
 	
 	public void Ajouter_Lieu(int ID_Map){

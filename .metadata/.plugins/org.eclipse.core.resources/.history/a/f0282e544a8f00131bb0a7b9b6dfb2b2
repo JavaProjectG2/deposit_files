@@ -195,13 +195,8 @@ public class form_modifier_poi extends javax.swing.JFrame {
 
     private void bouton_modifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bouton_modifierActionPerformed
         // TODO add your handling code here:
-    	if(this.text_image == null){
-    		pi.Modifier_PI(this.Id_PI, this.bouton_libelle.getText(), this.label_texte_court.getText(), this.label_description.getText());
-
-    	}
-    	else{
-    		pi.Modifier_PI(this.Id_PI, this.bouton_libelle.getText(), this.label_texte_court.getText(), this.label_description.getText(), this.text_image.getText());
-    	}
+    	
+    	pi.Supprimer_PI(Id_PI);
     	
     }//GEN-LAST:event_bouton_modifierActionPerformed
 

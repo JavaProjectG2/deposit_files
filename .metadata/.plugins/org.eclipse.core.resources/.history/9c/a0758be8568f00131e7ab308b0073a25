@@ -161,15 +161,7 @@ public class PI extends JButton{
 	}
 	
 
-	public void Modifier_PI(int Id_PI,String Libelle,String TexteCourt,String Description){
-		String[] champs = new String[3];
-		
-		champs[0]="Libelle_Interet=\'" + Libelle + "\',";
-		champs[1]="TexteCourt_Interet=\'" + TexteCourt + "\',";
-		champs[2]="Description_Interet=\'" + Description + "\'";
-		
-		mappingsql.Update("interet", "ID_Interet=\'" + Id_PI +"\'", champs);
-	}
+	
 	public void Modifier_PI(int Id_PI,String Libelle,String TexteCourt,String Description,String ImagePI){
 		String[] champs = new String[4];
 		
