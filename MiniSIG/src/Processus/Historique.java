@@ -1,10 +1,13 @@
 package Processus;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.swing.BoxLayout;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import CAD.Mapping;
@@ -13,10 +16,20 @@ public class Historique{
 	 private Mapping mappingsql = new Mapping();
 	
 	 
-	public void ConsulterHisto(){
-		ResultSet results = mappingsql.Select("*", "`historique` ORDER BY `Date_Historique` DESC LIMIT 0 , 30");
+	public void ConsulterHisto() throws SQLException{
+		ResultSet results = mappingsql.Select("historique.Date_Historique, interet.Libelle_Interet, interet.TexteCourt_Interet", "`historique` INNER JOIN `interet` ON historique.ID_Interet=interet.ID_Interet ORDER BY `Date_Historique` DESC LIMIT 0 , 30");
 		JPanel Contener = new JPanel();
-		 
+		Contener.setLayout(new BoxLayout(Contener, BoxLayout.PAGE_AXIS));
+		
+		results.last();
+		int nbLignes = results.getRow();
+		
+		
+		for(int i=1; i<=nbLignes; i++) {
+			String contLigne = results.getNString(i);
+			JLabel labHisto = new JLabel(contLigne);
+			Contener.add(labHisto);
+		}
 	}
 	
 	public void AjouterHisto(int ID_Pi){
