@@ -90,11 +90,8 @@ public class Lieu extends JButton{
 		return Zoom;
 	}
 
-	public void Consulter_Lieu(){
-		this.panel = new JPanel();
-	
+	public void Consulter_Lieu(){	
 		carte.AfficherCarte(ID_Map);
-		
 	}
 	
 	public void Survol_Lieu(){

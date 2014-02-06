@@ -176,8 +176,8 @@ public class form_modifier_poi extends javax.swing.JFrame {
 
     private void bouton_supprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bouton_supprimerActionPerformed
         // TODO add your handling code here:
-        PI pi = new PI();
-        pi.Supprimer_PI();
+        
+        pi.Supprimer_PI(Id_PI);
 
     }//GEN-LAST:event_bouton_supprimerActionPerformed
 
@@ -195,6 +195,9 @@ public class form_modifier_poi extends javax.swing.JFrame {
 
     private void bouton_modifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bouton_modifierActionPerformed
         // TODO add your handling code here:
+    	
+    	pi.Supprimer_PI(Id_PI);
+    	
     }//GEN-LAST:event_bouton_modifierActionPerformed
 
     private void boutton_annulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutton_annulerActionPerformed
@@ -208,7 +211,7 @@ public class form_modifier_poi extends javax.swing.JFrame {
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel bouton_libelle;
+    public javax.swing.JLabel bouton_libelle;
     public javax.swing.JButton bouton_modifier;
     public javax.swing.JButton bouton_parcourir;
     private javax.swing.JButton bouton_supprimer;
@@ -217,10 +220,12 @@ public class form_modifier_poi extends javax.swing.JFrame {
     public javax.swing.JTextField jTextField1;
     public javax.swing.JTextField jTextField2;
     public javax.swing.JTextField jTextField3;
-    private javax.swing.JLabel label_description;
-    private javax.swing.JLabel label_image;
-    private javax.swing.JLabel label_texte_court;
+    public javax.swing.JLabel label_description;
+    public javax.swing.JLabel label_image;
+    public javax.swing.JLabel label_texte_court;
     private javax.swing.JPanel pan_md_poi;
     public javax.swing.JTextField text_image;
+    public int Id_PI;
+    private PI pi = new PI();
     // End of variables declaration//GEN-END:variables
 }

@@ -4,13 +4,15 @@ import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
+
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
 import CAD.Mapping;
-import Interface.pan_consulter_poi;
+import Interface.form_consulter_poi;
 
 
 public class PI extends JButton{
@@ -23,7 +25,7 @@ public class PI extends JButton{
 	private String TexteCourt;
 	private String Description;
 	private JPanel panel;
-	private pan_consulter_poi panel2;
+	private form_consulter_poi panel2;
 	private Mapping mappingsql = new Mapping();
 	private carte carte = new carte();
 	private Historique histo = new Historique();
@@ -104,12 +106,15 @@ public class PI extends JButton{
 	public void Consulter_PI(){
 		
 		histo.AjouterHisto(Id_PI);
-		panel2 = new pan_consulter_poi();
-		panel2.text_field_libelle.setText(Libelle);
-		panel2.texte_area_texte_court.setText(TexteCourt);
-		panel2.text_area_description.setText(Description);
-		/* Ajouter l'image*/
-	
+		histo.ConsulterHisto();
+		panel2 = new form_consulter_poi();
+
+	    panel2.label_description.setText(Description);
+	    panel2.label_image.setIcon(new ImageIcon(ImagePI));
+	    panel2.label_libelle.setText(Libelle);
+	    panel2.label_texte_court.setText(TexteCourt);
+	    panel2.Id_PI=this.Id_PI;
+		panel2.setVisible(true);
 	}
 	
 	public void Survol_PI(){
@@ -143,9 +148,11 @@ public class PI extends JButton{
 		mappingsql.Insert("interet", nomCol, champs);
 	}
 	
-	public void Supprimer_PI(){
+	public void Supprimer_PI(int Id_PI){
 		mappingsql.Delete("interet","ID_Interet=\'" + Id_PI + "\'");
 	}
+	
+
 	
 	public void Modifier_PI(int ID_Lieu){
 		String[] champs = new String[7];
