@@ -19,12 +19,6 @@ import javax.swing.JTextField;
  */
 public class pan_consulter_poi extends javax.swing.JPanel {
 
-	public JButton getbutton_modifier(){
-		return button_modifier;
-	}
-    public void setbutton_modifier(JButton button_modifier){
-    	this.button_modifier =button_modifier;
-    }
     public pan_consulter_poi() {
         initComponents();
     }

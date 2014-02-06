@@ -80,8 +80,6 @@ public class Interface_graphique extends javax.swing.JFrame {
             }
         });
 
-        champ_recherche.setText("Recherche globale");
-
         boutton_recherche.setText("Rechercher");
         boutton_recherche.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -401,14 +399,13 @@ public class Interface_graphique extends javax.swing.JFrame {
                 }
                 try{
                     
-               /* int largeur = 700;
+                int largeur = 700;
                 int longueur = 500;
                 Map map = new Map(largeur,longueur,"arras2.png");
                 map.setLayout(null);
                 pan_map.add(map);
                 map.setVisible(true);
-                System.out.println("map chargé");*/
-                
+                System.out.println("map chargé");
                 }
                 
                 catch(Exception e){
@@ -417,10 +414,10 @@ public class Interface_graphique extends javax.swing.JFrame {
                 
                 try{
                     JButton button = new JButton();
+                    button.setVisible(true);
                     pan_map.add(button);
                     System.out.println("bouton chargé");
                 }
-                
                 catch(Exception e){
                 
                 }
@@ -435,7 +432,7 @@ public class Interface_graphique extends javax.swing.JFrame {
     private javax.swing.JButton boutton_recherche;
     private javax.swing.JButton boutton_suivant;
     private javax.swing.JTextField champ_recherche;
-    private javax.swing.JPanel container;
+    public static javax.swing.JPanel container;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuItem jMenuItem3;
