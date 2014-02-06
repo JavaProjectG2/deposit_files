@@ -6,6 +6,9 @@
 
 package Interface;
 
+import Processus.Map;
+import javax.swing.*;
+
 /**
  *
  * @author Rémi
@@ -17,7 +20,13 @@ public class Interface_graphique extends javax.swing.JFrame {
      */
     public Interface_graphique() {
         initComponents();
+        
+ 
     }
+    
+    /*public void setPOI(JPanel pan_poi){
+        
+    }*/
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -35,20 +44,20 @@ public class Interface_graphique extends javax.swing.JFrame {
         pan_recherche = new javax.swing.JPanel();
         champ_recherche = new javax.swing.JTextField();
         boutton_recherche = new javax.swing.JButton();
-        boutton_ajouter_poi = new javax.swing.JButton();
-        pan_carte = new javax.swing.JPanel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        pan_news = new javax.swing.JPanel();
+        boutton_precedent = new javax.swing.JButton();
+        boutton_suivant = new javax.swing.JButton();
+        pan_resultat_recherche = new javax.swing.JTabbedPane();
         pan_historique = new javax.swing.JPanel();
         pan_parcours = new javax.swing.JPanel();
+        pan_resultat = new javax.swing.JPanel();
+        pan_news = new javax.swing.JPanel();
         pan_poi = new javax.swing.JPanel();
+        pan_map = new javax.swing.JPanel();
         MenuBar_globale = new javax.swing.JMenuBar();
         menu_edition = new javax.swing.JMenu();
         menu_item_ajouter_lieux = new javax.swing.JMenuItem();
-        menu_item_modif_supp_lieux = new javax.swing.JMenuItem();
         menu_poi = new javax.swing.JMenu();
         menu_item_ajouter_poi = new javax.swing.JMenuItem();
-        menu_item_modif_supp_poi = new javax.swing.JMenuItem();
         menu_parcours_modfi_supp_parcours = new javax.swing.JMenu();
         menu_item_ajouter_parcours = new javax.swing.JMenuItem();
         menu_item_modif_supp_parcours = new javax.swing.JMenuItem();
@@ -63,6 +72,13 @@ public class Interface_graphique extends javax.swing.JFrame {
         jMenu1.setText("jMenu1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("MiniSIG");
+        setMinimumSize(new java.awt.Dimension(985, 700));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         champ_recherche.setText("Recherche globale");
 
@@ -73,7 +89,14 @@ public class Interface_graphique extends javax.swing.JFrame {
             }
         });
 
-        boutton_ajouter_poi.setText("Ajouter un point d'intérêt");
+        boutton_precedent.setText("Précédent");
+
+        boutton_suivant.setText("Suivant");
+        boutton_suivant.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boutton_suivantActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pan_rechercheLayout = new javax.swing.GroupLayout(pan_recherche);
         pan_recherche.setLayout(pan_rechercheLayout);
@@ -84,9 +107,11 @@ public class Interface_graphique extends javax.swing.JFrame {
                 .addComponent(champ_recherche, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(boutton_recherche)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
-                .addComponent(boutton_ajouter_poi)
-                .addGap(80, 80, 80))
+                .addGap(118, 118, 118)
+                .addComponent(boutton_precedent)
+                .addGap(53, 53, 53)
+                .addComponent(boutton_suivant)
+                .addContainerGap(59, Short.MAX_VALUE))
         );
         pan_rechercheLayout.setVerticalGroup(
             pan_rechercheLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -95,120 +120,135 @@ public class Interface_graphique extends javax.swing.JFrame {
                 .addGroup(pan_rechercheLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(boutton_recherche, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(champ_recherche)
-                    .addComponent(boutton_ajouter_poi))
+                    .addComponent(boutton_precedent)
+                    .addComponent(boutton_suivant))
                 .addGap(0, 11, Short.MAX_VALUE))
         );
-
-        javax.swing.GroupLayout pan_carteLayout = new javax.swing.GroupLayout(pan_carte);
-        pan_carte.setLayout(pan_carteLayout);
-        pan_carteLayout.setHorizontalGroup(
-            pan_carteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        pan_carteLayout.setVerticalGroup(
-            pan_carteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout pan_newsLayout = new javax.swing.GroupLayout(pan_news);
-        pan_news.setLayout(pan_newsLayout);
-        pan_newsLayout.setHorizontalGroup(
-            pan_newsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 211, Short.MAX_VALUE)
-        );
-        pan_newsLayout.setVerticalGroup(
-            pan_newsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 557, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("News", pan_news);
 
         javax.swing.GroupLayout pan_historiqueLayout = new javax.swing.GroupLayout(pan_historique);
         pan_historique.setLayout(pan_historiqueLayout);
         pan_historiqueLayout.setHorizontalGroup(
             pan_historiqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 211, Short.MAX_VALUE)
+            .addGap(0, 235, Short.MAX_VALUE)
         );
         pan_historiqueLayout.setVerticalGroup(
             pan_historiqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 557, Short.MAX_VALUE)
+            .addGap(0, 584, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Historique", pan_historique);
+        pan_resultat_recherche.addTab("Historique", pan_historique);
 
         javax.swing.GroupLayout pan_parcoursLayout = new javax.swing.GroupLayout(pan_parcours);
         pan_parcours.setLayout(pan_parcoursLayout);
         pan_parcoursLayout.setHorizontalGroup(
             pan_parcoursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 211, Short.MAX_VALUE)
+            .addGap(0, 235, Short.MAX_VALUE)
         );
         pan_parcoursLayout.setVerticalGroup(
             pan_parcoursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 557, Short.MAX_VALUE)
+            .addGap(0, 584, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Parcours", pan_parcours);
+        pan_resultat_recherche.addTab("Parcours", pan_parcours);
+
+        javax.swing.GroupLayout pan_resultatLayout = new javax.swing.GroupLayout(pan_resultat);
+        pan_resultat.setLayout(pan_resultatLayout);
+        pan_resultatLayout.setHorizontalGroup(
+            pan_resultatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 235, Short.MAX_VALUE)
+        );
+        pan_resultatLayout.setVerticalGroup(
+            pan_resultatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 584, Short.MAX_VALUE)
+        );
+
+        pan_resultat_recherche.addTab("Resultats recherche", pan_resultat);
+
+        javax.swing.GroupLayout pan_newsLayout = new javax.swing.GroupLayout(pan_news);
+        pan_news.setLayout(pan_newsLayout);
+        pan_newsLayout.setHorizontalGroup(
+            pan_newsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 235, Short.MAX_VALUE)
+        );
+        pan_newsLayout.setVerticalGroup(
+            pan_newsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 584, Short.MAX_VALUE)
+        );
+
+        pan_resultat_recherche.addTab("News", pan_news);
 
         javax.swing.GroupLayout pan_poiLayout = new javax.swing.GroupLayout(pan_poi);
         pan_poi.setLayout(pan_poiLayout);
         pan_poiLayout.setHorizontalGroup(
             pan_poiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 211, Short.MAX_VALUE)
+            .addGap(0, 235, Short.MAX_VALUE)
         );
         pan_poiLayout.setVerticalGroup(
             pan_poiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 557, Short.MAX_VALUE)
+            .addGap(0, 584, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Points d'intérêts", pan_poi);
+        pan_resultat_recherche.addTab("P.I", pan_poi);
+
+        pan_map.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pan_mapMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pan_mapLayout = new javax.swing.GroupLayout(pan_map);
+        pan_map.setLayout(pan_mapLayout);
+        pan_mapLayout.setHorizontalGroup(
+            pan_mapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 763, Short.MAX_VALUE)
+        );
+        pan_mapLayout.setVerticalGroup(
+            pan_mapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 546, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout containerLayout = new javax.swing.GroupLayout(container);
         container.setLayout(containerLayout);
         containerLayout.setHorizontalGroup(
             containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(containerLayout.createSequentialGroup()
-                .addGroup(containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(pan_recherche, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pan_carte, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pan_recherche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pan_map, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE))
+                .addComponent(pan_resultat_recherche))
         );
         containerLayout.setVerticalGroup(
-            containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(containerLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(pan_recherche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pan_carte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jTabbedPane1)
+                .addComponent(pan_map, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(pan_resultat_recherche)
         );
 
         menu_edition.setText("Lieux");
 
         menu_item_ajouter_lieux.setText("Ajouter");
-        menu_edition.add(menu_item_ajouter_lieux);
-
-        menu_item_modif_supp_lieux.setText("Modifier/Supprimer");
-        menu_item_modif_supp_lieux.addActionListener(new java.awt.event.ActionListener() {
+        menu_item_ajouter_lieux.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menu_item_modif_supp_lieuxActionPerformed(evt);
+                menu_item_ajouter_lieuxActionPerformed(evt);
             }
         });
-        menu_edition.add(menu_item_modif_supp_lieux);
+        menu_edition.add(menu_item_ajouter_lieux);
 
         MenuBar_globale.add(menu_edition);
 
-        menu_poi.setText("Points d'intérêts");
+        menu_poi.setText("Points d'intéterêts");
 
         menu_item_ajouter_poi.setText("Ajouter");
-        menu_poi.add(menu_item_ajouter_poi);
-
-        menu_item_modif_supp_poi.setText("Modifier/Supprimer");
-        menu_item_modif_supp_poi.addActionListener(new java.awt.event.ActionListener() {
+        menu_item_ajouter_poi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menu_item_modif_supp_poiActionPerformed(evt);
+                menu_item_ajouter_poiActionPerformed(evt);
             }
         });
-        menu_poi.add(menu_item_modif_supp_poi);
+        menu_poi.add(menu_item_ajouter_poi);
 
         MenuBar_globale.add(menu_poi);
 
@@ -230,9 +270,19 @@ public class Interface_graphique extends javax.swing.JFrame {
         jMenu2.setText("News");
 
         menu_item_ajouter_news.setText("Ajouter");
+        menu_item_ajouter_news.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_item_ajouter_newsActionPerformed(evt);
+            }
+        });
         jMenu2.add(menu_item_ajouter_news);
 
         menu_item_modif_supp_news.setText("Modifier/Supprimer");
+        menu_item_modif_supp_news.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_item_modif_supp_newsActionPerformed(evt);
+            }
+        });
         jMenu2.add(menu_item_modif_supp_news);
 
         MenuBar_globale.add(jMenu2);
@@ -243,21 +293,15 @@ public class Interface_graphique extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(container, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+            .addComponent(container, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(container, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(container, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void menu_item_modif_supp_lieuxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_modif_supp_lieuxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_menu_item_modif_supp_lieuxActionPerformed
 
     private void boutton_rechercheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutton_rechercheActionPerformed
         // TODO add your handling code here:
@@ -267,9 +311,54 @@ public class Interface_graphique extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_menu_item_modif_supp_parcoursActionPerformed
 
-    private void menu_item_modif_supp_poiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_modif_supp_poiActionPerformed
+    private void menu_item_ajouter_lieuxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_ajouter_lieuxActionPerformed
+        // TODO add your handling code here:        
+        
+    }//GEN-LAST:event_menu_item_ajouter_lieuxActionPerformed
+
+    private void menu_item_ajouter_poiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_ajouter_poiActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_menu_item_modif_supp_poiActionPerformed
+        /*form_consulter_poi fm_consult_poi = new form_consulter_poi();
+        fm_consult_poi.setVisible(true);*/
+        
+        form_ajouter_poi fm_ajout_poi = new form_ajouter_poi();
+        fm_ajout_poi.setVisible(true);
+    }//GEN-LAST:event_menu_item_ajouter_poiActionPerformed
+
+    private void menu_item_ajouter_newsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_ajouter_newsActionPerformed
+        // TODO add your handling code here:
+        form_ajouter_news fan = new form_ajouter_news();
+        fan.setVisible(true);
+    }//GEN-LAST:event_menu_item_ajouter_newsActionPerformed
+
+    private void menu_item_modif_supp_newsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_modif_supp_newsActionPerformed
+        // TODO add your handling code here:
+        form_modifier_news fmn = new form_modifier_news();
+        fmn.setVisible(true);
+    }//GEN-LAST:event_menu_item_modif_supp_newsActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+         int largeur = 760;
+        int longueur = 540;
+        Map map = new Map(largeur,longueur,"arras2.png");
+        map.setLayout(null);
+        pan_map.add(map);
+        map.setVisible(true);
+        
+    }//GEN-LAST:event_formWindowOpened
+
+    private void pan_mapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pan_mapMouseClicked
+        // TODO add your handling code here
+        
+        
+    }//GEN-LAST:event_pan_mapMouseClicked
+
+    private void boutton_suivantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutton_suivantActionPerformed
+        // TODO add your handling code here:
+       
+        
+    }//GEN-LAST:event_boutton_suivantActionPerformed
 
     /**
      * @param args the command line arguments
@@ -301,38 +390,55 @@ public class Interface_graphique extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Interface_graphique().setVisible(true);
+                try{
+                    new Interface_graphique().setVisible(true);
+                }
+                catch(Exception e){
+                    
+                }
+                try{
+                int largeur = 760;
+                int longueur = 540;
+                Map map = new Map(largeur,longueur,"arras2.png");
+                map.setLayout(null);
+                pan_map.add(map);
+                map.setVisible(true);
+                }
+                catch(Exception e){
+                    
+                }
             }
         });
     }
 
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar MenuBar_globale;
-    private javax.swing.JButton boutton_ajouter_poi;
+    private javax.swing.JButton boutton_precedent;
     private javax.swing.JButton boutton_recherche;
+    private javax.swing.JButton boutton_suivant;
     private javax.swing.JTextField champ_recherche;
     private javax.swing.JPanel container;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JMenu menu_edition;
     private javax.swing.JMenuItem menu_item_ajouter_lieux;
     private javax.swing.JMenuItem menu_item_ajouter_news;
     private javax.swing.JMenuItem menu_item_ajouter_parcours;
     private javax.swing.JMenuItem menu_item_ajouter_poi;
-    private javax.swing.JMenuItem menu_item_modif_supp_lieux;
     private javax.swing.JMenuItem menu_item_modif_supp_news;
     private javax.swing.JMenuItem menu_item_modif_supp_parcours;
-    private javax.swing.JMenuItem menu_item_modif_supp_poi;
     private javax.swing.JMenu menu_parcours_modfi_supp_parcours;
     private javax.swing.JMenu menu_poi;
-    private javax.swing.JPanel pan_carte;
     private javax.swing.JPanel pan_historique;
+    public static javax.swing.JPanel pan_map;
     private javax.swing.JPanel pan_news;
     private javax.swing.JPanel pan_parcours;
     private javax.swing.JPanel pan_poi;
     private javax.swing.JPanel pan_recherche;
+    private javax.swing.JPanel pan_resultat;
+    private javax.swing.JTabbedPane pan_resultat_recherche;
     // End of variables declaration//GEN-END:variables
 }
