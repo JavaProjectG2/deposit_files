@@ -1,4 +1,4 @@
-package iu.parcours;
+package Interface;
 
 public class AjoutParcours extends javax.swing.JFrame {
     private String Libelle;
