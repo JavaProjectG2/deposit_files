@@ -1,8 +1,11 @@
-package iu.parcours;
+package Interface;
 
 import java.awt.TextArea;
+
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+
+import CAD.Mapping;
 
 public class parcours
 {
@@ -26,14 +29,14 @@ public void AjouterParcours(String Description,String Libelle,String TextCourt)
 	mpg.Insert("parcours", nomCol , champs);
 }
 
-public void SupprimerParcours()
+public void SupprimerParcours(String condition)
 {
-    String[] nomCol = new String[3];
+    /*String[] nomCol = new String[3];
     nomCol[0]="Description_Parcours";
     nomCol[1]="Libelle_Parcours";
-    nomCol[2]= "TexteCourt_Parcours";
+    nomCol[2]= "TexteCourt_Parcours";*/
             
 	//String condition = "ID_parcours = "+Id+"";
-	mpg.Delete("parcours", nomCol , champs);
+	mpg.Delete("parcours", condition);
 }
 }

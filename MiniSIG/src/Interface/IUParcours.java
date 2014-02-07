@@ -1,4 +1,4 @@
-package iu.parcours;
+package Interface;
 
 public class IUParcours 
 {
