@@ -32,10 +32,14 @@ public class Map extends javax.swing.JPanel {
 	private String image;
 	private Mapping mpg = new Mapping();
 	private ResultSet rs;
+	int nbLIgnes;
 	ArrayList<PI> list_PI = new ArrayList<PI>() ;
+	ArrayList<Lieu> list_Lieu = new ArrayList<Lieu>() ;
 	ArrayList<JPanel> panelPI = new ArrayList<JPanel>() ;
+	ArrayList<JPanel> panelLieu = new ArrayList<JPanel>() ;
 	ArrayList<Integer> Id_PI = new ArrayList<Integer>();
-	Iterator<JPanel> it = panelPI.iterator(); 
+	ArrayList<Integer> Id_Lieu = new ArrayList<Integer>();
+	Iterator<JPanel> it_PI = panelPI.iterator(); 
 	
 
 	int nbligne;
@@ -58,7 +62,7 @@ public class Map extends javax.swing.JPanel {
 				public void mouseDragged(MouseEvent evt) {
 					x = evt.getX();
 					y = evt.getY();
-					while (it.hasNext()); 
+					while (it_PI.hasNext()); 
 
 					remove(panelPI.indexOf((list_PI.get(Id_PI.get(1))))) ; 
 
@@ -78,7 +82,12 @@ public class Map extends javax.swing.JPanel {
 	  
 		 int[] coord1 = carteactu.calculcoorduniversel( image , img , x ,  y );
 		 int[] coord2 = carteactu.calculcoorduniversel( image , img , x+width ,  y+height );
-		 SelectionPI(coord1[0] , coord1[1] , coord2[2] , coord2[2]) ;
+		 try {
+			SelectionPI(coord1[0] , coord1[1] , coord2[2] , coord2[2]) ;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
 		
@@ -92,10 +101,17 @@ public class Map extends javax.swing.JPanel {
 
 
 	
-	public void SelectionPI(int x1 , int y1 , int x2 , int y2 )
+	public void SelectionPI(int x1 , int y1 , int x2 , int y2 ) throws SQLException
 	{
-				
-		rs = mpg.Select("ID_Interet, Libelle_Interet, TexteCourt_Interet, Description_Interet, X_Interet, Y_Interet, Image_Interet", "PI" , "(PI.x between "+x1+" and "+y1+") AND (PI.y betwenn "+x1+" and "+x2+")" ) ;
+		rs = mpg.Select("count(*)","AS nbLignes", "(interet.X_interet between "+x1+" and "+y1+") AND (interet.Y_interet betwenn "+x1+" and "+x2+")" ) ;		
+		
+		int nbLignes=0;
+    	rs.next();
+    	nbLignes = rs.getInt("nbLignes");
+    	rs = null;
+
+		
+		rs = mpg.Select("ID_Interet, Libelle_Interet, TexteCourt_Interet, Description_Interet, X_Interet, Y_Interet, Image_Interet", "interet" , "(interet.X_interet between "+x1+" and "+y1+") AND (interet.Y_interet betwenn "+x1+" and "+x2+")" ) ;
 		
 			
 			
@@ -106,7 +122,7 @@ public class Map extends javax.swing.JPanel {
 					
 					try {
 						
-						 int i =0;
+						
 						 Id_PI.add(rs.getInt(1));
 								
 						
@@ -120,6 +136,63 @@ public class Map extends javax.swing.JPanel {
 						list_PI.get(rs.getInt(1)).setOrdonee(rs.getDouble(6));
 						list_PI.get(rs.getInt(1)).setImage(rs.getString(7));
 						list_PI.get(rs.getInt(1)).setTexteCourt(rs.getString(3));
+						list_PI.get(rs.getInt(1)).setZomm(rs.getInt(8));
+						int[] coord = new int[2];
+						coord = carteactu.calculcoordpoint(list_PI.get(rs.getInt(1)).getId_PI(),img , list_PI.get(rs.getInt(1)).getAbscisse(), list_PI.get(rs.getInt(1)).getOrdonee());
+						
+						
+						
+						panelPI.add(rs.getInt(1), new JPanel());
+						panelPI.get(rs.getInt(1)).add(list_PI.get(rs.getInt(1)));
+						panelPI.get(rs.getInt(1)).setVisible(true);	
+						add(panelPI.get(rs.getInt(1)));
+						panelPI.get(rs.getInt(1)).setLocation( coord[0], coord[1]);
+						panelPI.get(rs.getInt(1)).setVisible(true);
+						
+						
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+					
+						}
+					}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		
+
+
+	}
+	public void Selectionlieu(int x1 , int y1 , int x2 , int y2 )
+	{
+				
+		rs = mpg.Select("*", "lieu" , "(lieu.X_lieu between "+x1+" and "+y1+") AND (lieu.Y_lieu betwenn "+x1+" and "+x2+")" ) ;
+		
+			
+			
+			try {
+				while (rs.next()){
+				
+						{
+					
+					try {
+						
+						 int i =0;
+						 Id_lieu.add(rs.getInt(1));
+								
+						
+						
+						list_Lieu.add(rs.getInt(1),new Lieu());
+						list_Lieu.get(rs.getInt(1)).setLibelle(rs.getString(2));
+						list_Lieu.get(rs.getInt(1)).setId_Lieu(rs.getInt(1));
+						list_Lieu.get(rs.getInt(1)).setAbscisse(rs.getDouble(3));
+						list_Lieu.get(rs.getInt(1)).setOrdonee(rs.getDouble(4));
+						list_Lieu.get(rs.getInt(1)).setZoom(rs.getInt(8));
+						list_Lieu.get(rs.getInt(1)).setID_map(rs.getInt(8));
 						
 						int[] coord = new int[2];
 						coord = carteactu.calculcoordpoint(list_PI.get(rs.getInt(1)).getId_PI(),img , list_PI.get(rs.getInt(1)).getAbscisse(), list_PI.get(rs.getInt(1)).getOrdonee());
@@ -131,6 +204,7 @@ public class Map extends javax.swing.JPanel {
 						panelPI.get(rs.getInt(1)).setVisible(true);	
 						add(panelPI.get(rs.getInt(1)));
 						panelPI.get(rs.getInt(1)).setLocation( coord[0], coord[1]);
+						panelPI.get(rs.getInt(1)).setVisible(true);
 						i++;
 						
 					} catch (SQLException e) {
@@ -150,4 +224,7 @@ public class Map extends javax.swing.JPanel {
 
 
 	}
+	
+	
+	
 }
