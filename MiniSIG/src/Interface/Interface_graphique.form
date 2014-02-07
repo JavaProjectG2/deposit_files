@@ -40,7 +40,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="menu_poi">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Points d&apos;int&#xe9;ter&#xea;ts"/>
+            <Property name="text" type="java.lang.String" value="Points d&apos;inteterets"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menu_item_ajouter_poi">
@@ -102,8 +102,11 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="title" type="java.lang.String" value="MiniSIG"/>
+    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[1300, 800]"/>
+    </Property>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[985, 700]"/>
+      <Dimension value="[985, 649]"/>
     </Property>
   </Properties>
   <SyntheticProperties>
@@ -148,9 +151,9 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="pan_recherche" min="-2" max="-2" attributes="0"/>
-                      <Component id="pan_map" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="pan_recherche" max="32767" attributes="0"/>
+                      <Component id="panel_map" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="pan_resultat_recherche" max="32767" attributes="0"/>
@@ -163,7 +166,8 @@
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="pan_recherche" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="pan_map" min="-2" max="-2" attributes="0"/>
+                  <Component id="panel_map" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
               <Component id="pan_resultat_recherche" max="32767" attributes="0"/>
           </Group>
@@ -184,7 +188,7 @@
                       <Component id="boutton_precedent" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                       <Component id="boutton_suivant" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="59" max="32767" attributes="0"/>
+                      <EmptySpace pref="305" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -216,8 +220,11 @@
             </Component>
             <Component class="javax.swing.JButton" name="boutton_precedent">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Pr&#xe9;c&#xe9;dent"/>
+                <Property name="text" type="java.lang.String" value="Precedent"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boutton_precedentActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="boutton_suivant">
               <Properties>
@@ -233,28 +240,6 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
           <SubComponents>
-            <Container class="javax.swing.JPanel" name="pan_historique">
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="Historique">
-                    <Property name="tabTitle" type="java.lang.String" value="Historique"/>
-                  </JTabbedPaneConstraints>
-                </Constraint>
-              </Constraints>
-
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="235" max="32767" attributes="0"/>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="584" max="32767" attributes="0"/>
-                  </Group>
-                </DimensionLayout>
-              </Layout>
-            </Container>
             <Container class="javax.swing.JPanel" name="pan_parcours">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
@@ -343,29 +328,79 @@
                 </DimensionLayout>
               </Layout>
             </Container>
+            <Container class="javax.swing.JPanel" name="pan_historique">
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="Historique">
+                    <Property name="tabTitle" type="java.lang.String" value="Historique"/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <EmptySpace min="0" pref="235" max="32767" attributes="0"/>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <EmptySpace min="0" pref="584" max="32767" attributes="0"/>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+            </Container>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="pan_map">
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pan_mapMouseClicked"/>
-          </Events>
+        <Container class="javax.swing.JPanel" name="panel_map">
+          <Properties>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                <BevelBorder/>
+              </Border>
+            </Property>
+            <Property name="focusable" type="boolean" value="false"/>
+          </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="Interface_graphique_pan_map"/>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
           </AuxValues>
 
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="763" max="32767" attributes="0"/>
+                  <Component id="panel_remplacement" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="546" max="32767" attributes="0"/>
+                  <Component id="panel_remplacement" alignment="1" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
+          <SubComponents>
+            <Container class="javax.swing.JPanel" name="panel_remplacement">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                    <BevelBorder/>
+                  </Border>
+                </Property>
+              </Properties>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <EmptySpace min="0" pref="539" max="32767" attributes="0"/>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+            </Container>
+          </SubComponents>
         </Container>
       </SubComponents>
     </Container>
