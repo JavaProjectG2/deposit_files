@@ -211,5 +211,7 @@ public class form_ajouter_poi extends javax.swing.JFrame {
     private javax.swing.JTextArea text_area_texte_court;
     public javax.swing.JTextField text_field_image;
     private javax.swing.JTextField text_field_libelle;
+    public double x;
+    public double y;
     // End of variables declaration//GEN-END:variables
 }

@@ -168,5 +168,6 @@ public class form_consulter_poi extends javax.swing.JFrame {
     public javax.swing.JLabel label_libelle;
     public javax.swing.JLabel label_texte_court;
     private javax.swing.JPanel pan_image;
+    public int Id_PI;
     // End of variables declaration//GEN-END:variables
 }

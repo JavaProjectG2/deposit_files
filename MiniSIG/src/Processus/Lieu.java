@@ -23,6 +23,7 @@ public class Lieu extends JButton{
 	private JPanel panel;
 	private Mapping mappingsql = new Mapping();
 	
+	
 	public Lieu(){
 		try {
 			Image img = ImageIO.read(getClass().getResource("Poibleu.png"));
@@ -31,7 +32,6 @@ public class Lieu extends JButton{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	    this.addMouseListener(new MouseListener()
 	    {
 	        public void mouseClicked(MouseEvent e)
@@ -91,7 +91,7 @@ public class Lieu extends JButton{
 	}
 
 	public void Consulter_Lieu(){	
-		carte.AfficherCarte(ID_Map);
+		//UI.AfficherCarte(ID_Map);
 	}
 	
 	public void Survol_Lieu(){

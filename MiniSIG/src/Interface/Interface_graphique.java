@@ -6,9 +6,11 @@
 
 package Interface;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import CAD.Mapping;
 import Processus.Map;
-import java.awt.Color;
-import javax.swing.*;
 
 /**
  *
@@ -58,14 +60,9 @@ public class Interface_graphique extends javax.swing.JFrame {
         pan_poi = new javax.swing.JPanel();
         pan_historique = new javax.swing.JPanel();
         panel_map = new javax.swing.JPanel();
-<<<<<<< HEAD
-        panel_remplacement = new javax.swing.JPanel();
-=======
-        Map map_actuel = new Map(1100,539,"arras2.png");
-        map_actuel.setVisible(true);
-        panel_map.add(map_actuel);
         
->>>>>>> 4dfe4bf7f995158b1face08accee1253199f51bc
+        panel_remplacement = new javax.swing.JPanel();     
+
         MenuBar_globale = new javax.swing.JMenuBar();
         menu_edition = new javax.swing.JMenu();
         menu_item_ajouter_lieux = new javax.swing.JMenuItem();
@@ -86,13 +83,13 @@ public class Interface_graphique extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MiniSIG");
-<<<<<<< HEAD
+
         setMaximumSize(new java.awt.Dimension(1300, 800));
         setMinimumSize(new java.awt.Dimension(985, 649));
-=======
+
         setMaximumSize(new java.awt.Dimension(1000, 800));
         setMinimumSize(new java.awt.Dimension(1000, 800));
->>>>>>> 4dfe4bf7f995158b1face08accee1253199f51bc
+
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -211,7 +208,7 @@ public class Interface_graphique extends javax.swing.JFrame {
         );
 
         pan_resultat_recherche.addTab("Historique", pan_historique);
-<<<<<<< HEAD
+
 
         panel_map.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         panel_map.setFocusable(false);
@@ -237,35 +234,33 @@ public class Interface_graphique extends javax.swing.JFrame {
         );
         panel_mapLayout.setVerticalGroup(
             panel_mapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel_remplacement, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-=======
-
+            .addComponent(panel_remplacement, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
+        
         panel_map.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        panel_map.setFocusable(false);
+       	panel_map.setFocusable(false);
 
         map_actuel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        javax.swing.GroupLayout panel_remplacementLayout = new javax.swing.GroupLayout(map_actuel);
-        map_actuel.setLayout(panel_remplacementLayout);
-        panel_remplacementLayout.setHorizontalGroup(
-            panel_remplacementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout panel_remplacementLayout1 = new javax.swing.GroupLayout(map_actuel);
+        map_actuel.setLayout(panel_remplacementLayout1);
+        panel_remplacementLayout1.setHorizontalGroup(
+            panel_remplacementLayout1.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        panel_remplacementLayout.setVerticalGroup(
-            panel_remplacementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panel_remplacementLayout1.setVerticalGroup(
+            panel_remplacementLayout1.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 539, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout panel_mapLayout = new javax.swing.GroupLayout(panel_map);
-        panel_map.setLayout(panel_mapLayout);
-        panel_mapLayout.setHorizontalGroup(
-            panel_mapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout panel_mapLayout1 = new javax.swing.GroupLayout(panel_map);
+        panel_map.setLayout(panel_mapLayout1);
+        panel_mapLayout1.setHorizontalGroup(
+            panel_mapLayout1.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(map_actuel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        panel_mapLayout.setVerticalGroup(
-            panel_mapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panel_mapLayout1.setVerticalGroup(
+            panel_mapLayout1.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(map_actuel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
->>>>>>> 4dfe4bf7f995158b1face08accee1253199f51bc
         );
 
         javax.swing.GroupLayout containerLayout = new javax.swing.GroupLayout(container);
@@ -443,6 +438,10 @@ public class Interface_graphique extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Interface_graphique.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        
+        AfficherCarte();
+        
+
         //</editor-fold>
 
         /* Create and display the form */
@@ -450,19 +449,6 @@ public class Interface_graphique extends javax.swing.JFrame {
             public void run() {
                 try{
                     new Interface_graphique().setVisible(true);
-<<<<<<< HEAD
-                    
-                    System.out.println("interface charge");               
-=======
-                                     
-               
-                    
-                    System.out.println("interface charge");
-                    
-                    /*JButton jbu = new JButton();
-                    jbu.setVisible(true);
-                    pan_parcours.add(jbu);*/
->>>>>>> 4dfe4bf7f995158b1face08accee1253199f51bc
                 }
                 catch(Exception e){
                     
@@ -477,6 +463,23 @@ public class Interface_graphique extends javax.swing.JFrame {
                 }
             }
         });
+    }
+    private static void AfficherCarte(){
+    	map_actuel = new Map(1100,539,"arras2.png");
+    	map_actuel.setVisible(true);
+        panel_map.add(map_actuel);
+    }
+    public void AfficherCarte(int Id_Map){
+    	Mapping mpg = new Mapping();
+    	ResultSet rs=mpg.Select("Image_Map", "map", "ID_Map=\'"+Id_Map+"\'");
+    	String lienmap;
+		try {
+			lienmap = rs.getString("Image_Map");
+	    	map_actuel = new Map(1100,539,lienmap);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
 
@@ -508,10 +511,8 @@ public class Interface_graphique extends javax.swing.JFrame {
     private javax.swing.JPanel pan_resultat;
     private javax.swing.JTabbedPane pan_resultat_recherche;
     public static javax.swing.JPanel panel_map;
-<<<<<<< HEAD
     private javax.swing.JPanel panel_remplacement;
-=======
-    
->>>>>>> 4dfe4bf7f995158b1face08accee1253199f51bc
+    private static Map map_actuel;
+
     // End of variables declaration//GEN-END:variables
 }
