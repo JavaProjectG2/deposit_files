@@ -153,9 +153,10 @@ public class carte {
 		
 		public int[] calculcoorduniversel(String image , Image img , double x , double y )
 	      {
-	    	 rs = mpg.Select( "*" , "Map" , "Image_Map="+image );
+	    	 
 	    	  
 	    	 try {
+	    		 rs = mpg.Select( "*" , "Map" , "Image_Map="+image );
 	    		 int width = img.getWidth(null);
 		    	 int height = img.getHeight(null);
 		    	double X1 = rs.getDouble(1);
