@@ -58,10 +58,14 @@ public class Interface_graphique extends javax.swing.JFrame {
         pan_poi = new javax.swing.JPanel();
         pan_historique = new javax.swing.JPanel();
         panel_map = new javax.swing.JPanel();
+<<<<<<< HEAD
+        panel_remplacement = new javax.swing.JPanel();
+=======
         Map map_actuel = new Map(1100,539,"arras2.png");
         map_actuel.setVisible(true);
         panel_map.add(map_actuel);
         
+>>>>>>> 4dfe4bf7f995158b1face08accee1253199f51bc
         MenuBar_globale = new javax.swing.JMenuBar();
         menu_edition = new javax.swing.JMenu();
         menu_item_ajouter_lieux = new javax.swing.JMenuItem();
@@ -82,8 +86,13 @@ public class Interface_graphique extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MiniSIG");
+<<<<<<< HEAD
+        setMaximumSize(new java.awt.Dimension(1300, 800));
+        setMinimumSize(new java.awt.Dimension(985, 649));
+=======
         setMaximumSize(new java.awt.Dimension(1000, 800));
         setMinimumSize(new java.awt.Dimension(1000, 800));
+>>>>>>> 4dfe4bf7f995158b1face08accee1253199f51bc
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -202,6 +211,34 @@ public class Interface_graphique extends javax.swing.JFrame {
         );
 
         pan_resultat_recherche.addTab("Historique", pan_historique);
+<<<<<<< HEAD
+
+        panel_map.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panel_map.setFocusable(false);
+
+        panel_remplacement.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        javax.swing.GroupLayout panel_remplacementLayout = new javax.swing.GroupLayout(panel_remplacement);
+        panel_remplacement.setLayout(panel_remplacementLayout);
+        panel_remplacementLayout.setHorizontalGroup(
+            panel_remplacementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        panel_remplacementLayout.setVerticalGroup(
+            panel_remplacementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 539, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout panel_mapLayout = new javax.swing.GroupLayout(panel_map);
+        panel_map.setLayout(panel_mapLayout);
+        panel_mapLayout.setHorizontalGroup(
+            panel_mapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panel_remplacement, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        panel_mapLayout.setVerticalGroup(
+            panel_mapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panel_remplacement, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+=======
 
         panel_map.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         panel_map.setFocusable(false);
@@ -228,6 +265,7 @@ public class Interface_graphique extends javax.swing.JFrame {
         panel_mapLayout.setVerticalGroup(
             panel_mapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(map_actuel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+>>>>>>> 4dfe4bf7f995158b1face08accee1253199f51bc
         );
 
         javax.swing.GroupLayout containerLayout = new javax.swing.GroupLayout(container);
@@ -364,6 +402,10 @@ public class Interface_graphique extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
         
+    	/*JButton ghj = new JButton();
+        ghj.setVisible(true);
+        pan_news.add(ghj);*/
+    	
     }//GEN-LAST:event_formWindowOpened
 
     private void boutton_suivantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutton_suivantActionPerformed
@@ -408,6 +450,10 @@ public class Interface_graphique extends javax.swing.JFrame {
             public void run() {
                 try{
                     new Interface_graphique().setVisible(true);
+<<<<<<< HEAD
+                    
+                    System.out.println("interface charge");               
+=======
                                      
                
                     
@@ -416,6 +462,7 @@ public class Interface_graphique extends javax.swing.JFrame {
                     /*JButton jbu = new JButton();
                     jbu.setVisible(true);
                     pan_parcours.add(jbu);*/
+>>>>>>> 4dfe4bf7f995158b1face08accee1253199f51bc
                 }
                 catch(Exception e){
                     
@@ -461,6 +508,10 @@ public class Interface_graphique extends javax.swing.JFrame {
     private javax.swing.JPanel pan_resultat;
     private javax.swing.JTabbedPane pan_resultat_recherche;
     public static javax.swing.JPanel panel_map;
+<<<<<<< HEAD
+    private javax.swing.JPanel panel_remplacement;
+=======
     
+>>>>>>> 4dfe4bf7f995158b1face08accee1253199f51bc
     // End of variables declaration//GEN-END:variables
 }

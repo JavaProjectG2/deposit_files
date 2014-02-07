@@ -6,6 +6,8 @@
 
 package Interface;
 
+import Processus.News;
+import Processus.PI;
 /**
  *
  * @author Rémi
@@ -48,6 +50,11 @@ public class form_ajouter_news extends javax.swing.JFrame {
         jScrollPane1.setViewportView(text_area_description);
 
         boutton_ajouter.setText("Ajouter");
+        boutton_ajouter.addActionListener(new java.awt.event.ActionListener(){
+        	public void actionPerformed(java.awt.event.ActionEvent evt){
+        		boutton_ajouterActionPerformed(evt);
+        	}
+        });
 
         boutton_annuler.setText("Annuler");
         boutton_annuler.addActionListener(new java.awt.event.ActionListener() {
@@ -109,6 +116,14 @@ public class form_ajouter_news extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_boutton_annulerActionPerformed
 
+    private void boutton_ajouterActionPerformed(java.awt.event.ActionEvent evt){
+    	// TODO add your handling code here:
+    	String[] tab_news = new String[1];
+    	tab_news[0] = text_field_libelle.getText();   
+    	tab_news[1] = text_area_description.getText();
+    	news.AddNews(tab_news);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -122,5 +137,6 @@ public class form_ajouter_news extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea text_area_description;
     private javax.swing.JTextField text_field_libelle;
+    private News news = new News();
     // End of variables declaration//GEN-END:variables
 }

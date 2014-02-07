@@ -6,8 +6,6 @@
 
 package Interface;
 
-import javax.swing.ImageIcon;
-
 /**
  *
  * @author Rémi
@@ -139,11 +137,6 @@ public class form_consulter_poi extends javax.swing.JFrame {
     private void bouton_modifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bouton_modifierActionPerformed
         // TODO add your handling code here:
         form_modifier_poi fmd = new form_modifier_poi();
-        fmd.bouton_libelle = this.label_libelle;
-        fmd.label_description = this.label_description;
-        fmd.label_image = this.label_image;
-        fmd.label_texte_court = this.label_texte_court;
-        fmd.Id_PI = this.Id_PI;
         fmd.setVisible(true);
         
     }//GEN-LAST:event_bouton_modifierActionPerformed
@@ -169,12 +162,11 @@ public class form_consulter_poi extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton bouton_modifier;
-    public javax.swing.JButton boutton_annuler;
+    private javax.swing.JButton boutton_annuler;
     public javax.swing.JLabel label_description;
     public javax.swing.JLabel label_image;
     public javax.swing.JLabel label_libelle;
     public javax.swing.JLabel label_texte_court;
     private javax.swing.JPanel pan_image;
-    public int Id_PI;
     // End of variables declaration//GEN-END:variables
 }
