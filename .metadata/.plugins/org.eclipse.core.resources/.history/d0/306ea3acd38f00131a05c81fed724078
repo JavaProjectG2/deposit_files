@@ -110,7 +110,7 @@ public class carte {
 
 		public int[] calculcoordpoint(int id_carte , Image image , double x , double y )
 	      {
-	    	 rs = mpg.Select( "*" , "Map" , "id_Map="+id_carte );
+	    	 rs = mpg.Select( "*" , "carte" , "id_carte="+id_carte );
 	    	  
 	    	 try {
 	    		 int width = image.getWidth(null);
@@ -153,7 +153,7 @@ public class carte {
 		
 		public int[] calculcoorduniversel(String image , Image img , double x , double y )
 	      {
-	    	 rs = mpg.Select( "*" , "Map" , "Image_Map="+image );
+	    	 rs = mpg.Select( "*" , "carte" , "libelle_carte="+image );
 	    	  
 	    	 try {
 	    		 int width = img.getWidth(null);

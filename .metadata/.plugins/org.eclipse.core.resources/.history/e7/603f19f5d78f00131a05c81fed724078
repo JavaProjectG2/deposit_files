@@ -30,7 +30,6 @@ public class PI extends JButton{
 	private Mapping mappingsql = new Mapping();
 	private carte carte = new carte();
 	private Historique histo = new Historique();
-	private int Zoom ;
 	
 	public PI(){
 		try {
@@ -180,13 +179,5 @@ public class PI extends JButton{
 		champs[3]="Image_Interet=\'" + ImagePI + "\'";		
 		
 		mappingsql.Update("interet", "ID_Interet=\'" + Id_PI +"\'", champs);
-	}
-
-	public int getZoom() {
-		return Zoom;
-	}
-
-	public void setZoom(int zoom) {
-		Zoom = zoom;
 	}
 }

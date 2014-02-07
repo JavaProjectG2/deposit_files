@@ -136,7 +136,7 @@ public class Map extends javax.swing.JPanel {
 						list_PI.get(rs.getInt(1)).setOrdonee(rs.getDouble(6));
 						list_PI.get(rs.getInt(1)).setImage(rs.getString(7));
 						list_PI.get(rs.getInt(1)).setTexteCourt(rs.getString(3));
-						list_PI.get(rs.getInt(1)).setZoom(rs.getInt(8));
+						list_PI.get(rs.getInt(1)).setZomm(rs.getInt(8));
 						int[] coord = new int[2];
 						coord = carteactu.calculcoordpoint(list_PI.get(rs.getInt(1)).getId_PI(),img , list_PI.get(rs.getInt(1)).getAbscisse(), list_PI.get(rs.getInt(1)).getOrdonee());
 						
