@@ -21,12 +21,16 @@ import Processus.carte;
 public class form_ajouter_poi extends javax.swing.JFrame {
 
     private int Id_Map;
+    private double doubleX;
+    private double doubleY;
     private Map map;
     /**
      * Creates new form form_ajouter_poi
      */
     public form_ajouter_poi(double X,double Y) {
         initComponents();
+        this.doubleX=X;
+        this.doubleY=Y;
         this.Position_X.setText(String.valueOf(X));
         this.Position_Y.setText(String.valueOf(Y));
     }
@@ -234,8 +238,8 @@ public class form_ajouter_poi extends javax.swing.JFrame {
         // TODO add your handling code here:
         PI pi = new PI();
         
-        pi.setAbscisse(this.X);
-        pi.setOrdonee(this.Y);
+        pi.setAbscisse(this.doubleX);
+        pi.setOrdonee(this.doubleY);
     	pi.setLibelle(this.text_field_libelle.getText());
     	pi.setTexteCourt(this.text_area_texte_court.getText());
     	pi.setDescription(this.text_area_description.getText());

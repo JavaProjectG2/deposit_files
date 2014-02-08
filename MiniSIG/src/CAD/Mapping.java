@@ -15,19 +15,19 @@ public class Mapping
     
     //requete INSERT
     public void Insert(String nomTable, String[] nomCol, String[] champs) {
-        this.rq_sql  = "INSERT INTO `"+nomTable+"` ('";
+        this.rq_sql  = "INSERT INTO `"+nomTable+"` (`";
         
         for (String col : nomCol) {
-            this.rq_sql += col+"', '";
+            this.rq_sql += col+"`, `";
         }
         
         rq_sql = rq_sql.substring(0,(rq_sql.length()>=1)? rq_sql.length()-3 : 0); //supprime les 3 derniers caracteres de la requete pour retirer les quotes et virgules en trop.
         
-        this.rq_sql += ") VALUES ";
+        this.rq_sql += ") VALUES(";
         for (String champ : champs) {
             this.rq_sql += champ;
         }
-        
+        this.rq_sql+=")";
         conn.m_ActionsRows(rq_sql);
         
     }
