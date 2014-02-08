@@ -143,6 +143,19 @@
     "javaRuntime": true
   },
   {
+    "symbolicName": "mysql-connector-java-5.0.8-bin",
+    "version": {
+      "major": -1,
+      "minor": -1,
+      "micro": -1,
+      "qualifier": ""
+    },
+    "jarFileFingerprint": "7b9bfb6c4e4885660378a9c13330915c321f6cca",
+    "jarFileModificationDate": "2007-10-05T00:11:24+02:00",
+    "location": "C:\\Users\\ShadOxW\\Desktop\\mysql-connector-java-5.0.8-bin.jar\\mysql-connector-java-5.0.8-bin.jar",
+    "javaRuntime": false
+  },
+  {
     "symbolicName": "jre",
     "version": {
       "major": 1,

@@ -60,21 +60,21 @@ public class Recherche {
                 ResultSet result2 = mappingsql.Select("`Libelle_Lieu`", recherche2);
                 return result2;
 }
-/*
+
 	public ResultSet EffectuerRechercheParcours(String Contenu){
-          String recherche3="`parcours` WHERE Libelle_Parcours LIKE`";
+                String recherche3="`parcours` WHERE Libelle_Parcours LIKE`";
                 recherche3+= Contenu;
                 recherche3+="`%"; 
                 rechercher3+=
                 recherche3
                 return result3;
 	}
-
+	
 	/*public ResultSet[] EffectuerRecherche(String Contenu)
 	{
 		ResultSet[] tab_resultat = new ResultSet[2];
 		
-	}
+	}*/
 	
 	public Recherche(String Contenu) throws SQLException{
 		
@@ -96,7 +96,7 @@ public class Recherche {
 		}
 		
 	}
-    */
+    
 	
 	
 }

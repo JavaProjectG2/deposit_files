@@ -34,14 +34,14 @@ public class PI extends JLabel{
 	private int Zoom ;
 	
 	public PI(){
-		try {
-			Image img = ImageIO.read(getClass().getResource("Poibleu.png"));
-		    this.setIcon(new ImageIcon(img));
+		/*try {
+                	Image img = ImageIO.read(getClass().getResource("Poibleu.png"));
+                        this.setIcon(new ImageIcon(img));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		*/
 	    this.addMouseListener(new MouseListener()
 	    {
 	        public void mouseClicked(MouseEvent e)
@@ -145,7 +145,7 @@ public class PI extends JLabel{
 		int ID_Lieu = 0;
 		
 		try {
-			ResultSet rs = mappingsql.Select("ID_Lieu,Zoom", "lieu", "ID_Map = \'" + ID_Map +"\'");
+			ResultSet rs = mappingsql.Select("ID_Lieu,Zoom", "lieu", "ID_Map = \'" + ID_Map + "\'");
 			ID_Lieu = rs.getInt("ID_Lieu");
 			this.Zoom = rs.getInt("Zoom")+1;
 		} 

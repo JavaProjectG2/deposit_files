@@ -6,4 +6,5 @@
 <fullyQualifiedTypeName name="CAD.Mapping"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="java.sql.ResultSet"/>
+<fullyQualifiedTypeName name="Processus.Map"/>
 </qualifiedTypeNameHistroy>

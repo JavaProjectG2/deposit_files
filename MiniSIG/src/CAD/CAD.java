@@ -29,7 +29,7 @@ public class CAD
 	}
 	
 	public static Connection getConnection() throws SQLException, IOException {
-        Properties props = new Properties();
+       /* Properties props = new Properties();
         FileInputStream in = new FileInputStream("connect.conf");
         props.load(in);
         in.close();
@@ -39,8 +39,13 @@ public class CAD
                 System.setProperty("jdbc.drivers",drivers);
         String url = props.getProperty("jdbc.url");
         String username = props.getProperty("jdbc.username");
-        String password = props.getProperty("jdbc.password");
-        
+        String password = props.getProperty("jdbc.password");*/
+            
+        System.setProperty("jdbc.drivers","com.mysql.jdbc.Driver");
+	String url = "jdbc:mysql://127.0.0.1/minisig";
+	String username = "root";
+	String password = "";
+                
         return DriverManager.getConnection(url, username, password);
         }
 	

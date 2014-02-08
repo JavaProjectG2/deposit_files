@@ -56,15 +56,7 @@ public class Map extends javax.swing.JLayeredPane {
 		img = Toolkit.getDefaultToolkit().getImage(image);
 		initGUI();
 	}
-	
-/////////////////////////////////////	
-	public int[] Getpos(){
-		return null;
-		
-	}
 
-	
-/////////////////////////////////////	
 	private void initGUI() {
 		try {
 			setPreferredSize(new Dimension(1200, 1000));
