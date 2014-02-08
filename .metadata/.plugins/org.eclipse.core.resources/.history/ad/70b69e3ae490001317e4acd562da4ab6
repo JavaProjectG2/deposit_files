@@ -31,12 +31,13 @@ public class Interface_graphique extends javax.swing.JFrame {
  
     }
     
-    public void AjouterPi(double X, double Y){
-        form_ajouter_poi fm_ajout_poi = new form_ajouter_poi(X,Y);
-        fm_ajout_poi.setId_Map(this.Id_Map);
-        fm_ajout_poi.setMap(this.map_actuel);
-        fm_ajout_poi.setVisible(true);
-    }
+    /*public void Afficher_map(){
+    	
+    }*/
+    
+    /*public void setPOI(JPanel pan_poi){
+        
+    }*/
 
     
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -356,6 +357,11 @@ public class Interface_graphique extends javax.swing.JFrame {
         // TODO add your handling code here:
         /*form_consulter_poi fm_consult_poi = new form_consulter_poi();
         fm_consult_poi.setVisible(true);*/
+        
+        form_ajouter_poi fm_ajout_poi = new form_ajouter_poi();
+        fm_ajout_poi.setId_Map(this.Id_Map);
+        fm_ajout_poi.setMap(this.map_actuel);
+        fm_ajout_poi.setVisible(true);
     }//GEN-LAST:event_menu_item_ajouter_poiActionPerformed
 
     /*private void menu_item_ajouter_newsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_ajouter_newsActionPerformed
