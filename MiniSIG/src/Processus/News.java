@@ -56,14 +56,12 @@ public class News {
         ArrayList<String> ListNews = new ArrayList<String>();
         
         result = map.Select("Libelle_New, Description_New", "new");
-        System.out.println("ok10");
-        System.out.println("ok101");
+
         ResultSetMetaData resultMeta = result.getMetaData();
-        System.out.println("ok102");
+
+        //verifie que le ResultSet nest pas vide
         if(result.next()) {
-        	System.out.println("okif10");
 	        for(int i=1; i<= resultMeta.getColumnCount(); i++) {
-	        	System.out.println("okloop10"+i);
 	        	ListNews.add(result.getObject(i).toString());
 	        }
         }

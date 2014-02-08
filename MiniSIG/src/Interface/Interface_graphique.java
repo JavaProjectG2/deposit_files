@@ -205,6 +205,11 @@ public class Interface_graphique extends javax.swing.JFrame {
             pan_historiqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 584, Short.MAX_VALUE)
         );
+        try {
+        	Processus.Historique.DisplayPanelHistorique(pan_historique);
+        } catch(SQLException e) {
+        	e.printStackTrace();
+        }
 
         pan_resultat_recherche.addTab("Historique", pan_historique);
 
