@@ -70,7 +70,7 @@ public class Interface_graphique extends javax.swing.JFrame {
         menu_parcours_modfi_supp_parcours = new javax.swing.JMenu();
         menu_item_ajouter_parcours = new javax.swing.JMenuItem();
         menu_item_modif_supp_parcours = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        //jMenu2 = new javax.swing.JMenu();
         menu_item_ajouter_news = new javax.swing.JMenuItem();
         menu_item_modif_supp_news = new javax.swing.JMenuItem();
 
@@ -148,6 +148,11 @@ public class Interface_graphique extends javax.swing.JFrame {
             pan_parcoursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 584, Short.MAX_VALUE)
         );
+        try {
+			Processus.parcours.DisplayParcours(pan_parcours);;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
         pan_resultat_recherche.addTab("Parcours", pan_parcours);
 
@@ -301,7 +306,7 @@ public class Interface_graphique extends javax.swing.JFrame {
 
         MenuBar_globale.add(menu_parcours_modfi_supp_parcours);
 
-        jMenu2.setText("News");
+        /*jMenu2.setText("News");
 
         menu_item_ajouter_news.setText("Ajouter");
         menu_item_ajouter_news.addActionListener(new java.awt.event.ActionListener() {
@@ -319,7 +324,7 @@ public class Interface_graphique extends javax.swing.JFrame {
         });
         jMenu2.add(menu_item_modif_supp_news);
 
-        MenuBar_globale.add(jMenu2);
+        MenuBar_globale.add(jMenu2);*/
 
         setJMenuBar(MenuBar_globale);
 
@@ -361,7 +366,7 @@ public class Interface_graphique extends javax.swing.JFrame {
         fm_ajout_poi.setVisible(true);
     }//GEN-LAST:event_menu_item_ajouter_poiActionPerformed
 
-    private void menu_item_ajouter_newsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_ajouter_newsActionPerformed
+    /*private void menu_item_ajouter_newsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_ajouter_newsActionPerformed
         // TODO add your handling code here:
         form_ajouter_news fan = new form_ajouter_news();
         fan.setVisible(true);
@@ -371,7 +376,7 @@ public class Interface_graphique extends javax.swing.JFrame {
         // TODO add your handling code here:
         form_modifier_news fmn = new form_modifier_news();
         fmn.setVisible(true);
-    }//GEN-LAST:event_menu_item_modif_supp_newsActionPerformed
+    }//GEN-LAST:event_menu_item_modif_supp_newsActionPerformed*/
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
@@ -458,7 +463,7 @@ public class Interface_graphique extends javax.swing.JFrame {
     private javax.swing.JTextField champ_recherche;
     public static javax.swing.JPanel container;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
+    //private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenu menu_edition;
