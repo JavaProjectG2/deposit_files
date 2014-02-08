@@ -4,6 +4,7 @@ import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.imageio.ImageIO;
@@ -140,9 +141,20 @@ public class PI extends JLabel{
 	//	carte.ActionPOI(Abscisse,Ordonee,panel);
 	}
 	
-	public void Ajouter_PI(int ID_Lieu){
-		String[] nomCol = new String[7];
-		String[] champs = new String[7];
+	public void Ajouter_PI(int ID_Map){
+		int ID_Lieu = 0;
+		
+		try {
+			ResultSet rs = mappingsql.Select("ID_Lieu,Zoom", "lieu", "ID_Map = \'" + ID_Map +"\'");
+			ID_Lieu = rs.getInt("ID_Lieu");
+			this.Zoom = rs.getInt("Zoom")+1;
+		} 
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		String[] nomCol = new String[8];
+		String[] champs = new String[8];
 		
 		nomCol[0]="Libelle_Interet";
 		nomCol[1]="TexteCourt_Interet";
@@ -151,6 +163,7 @@ public class PI extends JLabel{
 		nomCol[4]="Y_Interet";
 		nomCol[5]="Image_Interet";
 		nomCol[6]="ID_Lieu";
+		nomCol[7]="Zoom";
 		
 		champs[0]=this.Libelle;
 		champs[1]=this.TexteCourt;
@@ -158,7 +171,8 @@ public class PI extends JLabel{
 		champs[3]=String.valueOf(this.Abscisse);
 		champs[4]=String.valueOf(this.Ordonee);
 		champs[5]=this.ImagePI;
-		champs[6]=String.valueOf(ID_Lieu);		
+		champs[6]=String.valueOf(ID_Lieu);
+		champs[7]=String.valueOf(this.Zoom);
 		
 		mappingsql.Insert("interet", nomCol, champs);
 	}

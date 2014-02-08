@@ -17,7 +17,8 @@ import Processus.Map;
  * @author Rémi
  */
 public class Interface_graphique extends javax.swing.JFrame {
-
+    private Map map_actuel;
+    private int Id_Map;
     /**
      * Creates new form Interface_graphique
      */
@@ -60,9 +61,7 @@ public class Interface_graphique extends javax.swing.JFrame {
         pan_poi = new javax.swing.JPanel();
         pan_historique = new javax.swing.JPanel();
         panel_map = new javax.swing.JPanel();
-        
-        panel_remplacement = new javax.swing.JPanel();     
-
+        panel_remplacement = new javax.swing.JPanel();
         MenuBar_globale = new javax.swing.JMenuBar();
         menu_edition = new javax.swing.JMenu();
         menu_item_ajouter_lieux = new javax.swing.JMenuItem();
@@ -83,13 +82,8 @@ public class Interface_graphique extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MiniSIG");
-
         setMaximumSize(new java.awt.Dimension(1300, 800));
         setMinimumSize(new java.awt.Dimension(985, 649));
-
-        setMaximumSize(new java.awt.Dimension(1000, 800));
-        setMinimumSize(new java.awt.Dimension(1000, 800));
-
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -209,7 +203,6 @@ public class Interface_graphique extends javax.swing.JFrame {
 
         pan_resultat_recherche.addTab("Historique", pan_historique);
 
-
         panel_map.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         panel_map.setFocusable(false);
 
@@ -234,33 +227,7 @@ public class Interface_graphique extends javax.swing.JFrame {
         );
         panel_mapLayout.setVerticalGroup(
             panel_mapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel_remplacement, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
-        
-        panel_map.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-       	panel_map.setFocusable(false);
-
-        map_actuel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        javax.swing.GroupLayout panel_remplacementLayout1 = new javax.swing.GroupLayout(map_actuel);
-        map_actuel.setLayout(panel_remplacementLayout1);
-        panel_remplacementLayout1.setHorizontalGroup(
-            panel_remplacementLayout1.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        panel_remplacementLayout1.setVerticalGroup(
-            panel_remplacementLayout1.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 539, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout panel_mapLayout1 = new javax.swing.GroupLayout(panel_map);
-        panel_map.setLayout(panel_mapLayout1);
-        panel_mapLayout1.setHorizontalGroup(
-            panel_mapLayout1.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(map_actuel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        panel_mapLayout1.setVerticalGroup(
-            panel_mapLayout1.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(map_actuel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panel_remplacement, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout containerLayout = new javax.swing.GroupLayout(container);
@@ -379,6 +346,8 @@ public class Interface_graphique extends javax.swing.JFrame {
         fm_consult_poi.setVisible(true);*/
         
         form_ajouter_poi fm_ajout_poi = new form_ajouter_poi();
+        fm_ajout_poi.setId_Map(this.Id_Map);
+        fm_ajout_poi.setMap(this.map_actuel);
         fm_ajout_poi.setVisible(true);
     }//GEN-LAST:event_menu_item_ajouter_poiActionPerformed
 
@@ -396,11 +365,7 @@ public class Interface_graphique extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        
-    	/*JButton ghj = new JButton();
-        ghj.setVisible(true);
-        pan_news.add(ghj);*/
-    	
+           	
     }//GEN-LAST:event_formWindowOpened
 
     private void boutton_suivantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutton_suivantActionPerformed
@@ -439,7 +404,6 @@ public class Interface_graphique extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Interface_graphique.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         
-        AfficherCarte();
         
 
         //</editor-fold>
@@ -454,17 +418,10 @@ public class Interface_graphique extends javax.swing.JFrame {
                     
                 }
               
-                
-                try{
-                    
-                }
-                catch(Exception e){
-                
-                }
             }
         });
     }
-    private static void AfficherCarte(){
+    private void AfficherCarte(){
     	map_actuel = new Map(1100,539,"arras2.png");
     	map_actuel.setVisible(true);
         panel_map.add(map_actuel);
@@ -505,14 +462,12 @@ public class Interface_graphique extends javax.swing.JFrame {
     private javax.swing.JMenu menu_poi;
     private javax.swing.JPanel pan_historique;
     private javax.swing.JPanel pan_news;
-    public static javax.swing.JPanel pan_parcours;
+    private javax.swing.JPanel pan_parcours;
     private javax.swing.JPanel pan_poi;
     private javax.swing.JPanel pan_recherche;
     private javax.swing.JPanel pan_resultat;
     private javax.swing.JTabbedPane pan_resultat_recherche;
     public static javax.swing.JPanel panel_map;
     private javax.swing.JPanel panel_remplacement;
-    private static Map map_actuel;
-
     // End of variables declaration//GEN-END:variables
 }

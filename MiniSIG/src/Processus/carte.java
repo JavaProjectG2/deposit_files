@@ -29,7 +29,7 @@ public class carte {
 	 private int zoom ;
 	 private  String image ;
 	 private  ResultSet rs;
-	 private  Mapping mpg;
+	 private  Mapping mpg = new Mapping();
 	 
 	 
 	 public carte()
@@ -110,11 +110,12 @@ public class carte {
 
 		public int[] calculcoordpoint(int id_carte , Image image , double x , double y )
 	      {
-	    	 rs = mpg.Select( "*" , "Map" , "id_Map="+id_carte );
+	    	 rs = mpg.Select("*","Map","id_Map="+id_carte);
 	    	  
 	    	 try {
 	    		 int width = image.getWidth(null);
 		    	 int height = image.getHeight(null);
+		    	 rs.next();
 		    	double X1 = rs.getDouble(1);
 				double X2 = rs.getDouble(2);
 				double Y1 = rs.getDouble(3);
@@ -151,18 +152,23 @@ public class carte {
 	    	  
 	      }
 		
-		public int[] calculcoorduniversel(String image , Image img , double x , double y )
+		public double[] calculcoorduniversel(String image , Image img , double x , double y )
 	      {
+			System.out.print("3");
+	    	 rs = mpg.Select( "*" , "map" ,  "map.Image_Map ='"+image+"'" );
+	    	 System.out.print("4");
 	    	 
-	    	  
 	    	 try {
-	    		 rs = mpg.Select( "*" , "Map" , "Image_Map="+image );
 	    		 int width = img.getWidth(null);
 		    	 int height = img.getHeight(null);
-		    	double X1 = rs.getDouble(1);
-				double X2 = rs.getDouble(2);
-				double Y1 = rs.getDouble(3);
-				double Y2 = rs.getDouble(4);
+		    	rs.next();
+		    	Double X1 = (Double) rs.getObject(2);
+				double X2 = rs.getDouble(3);
+				double Y1 = rs.getDouble(4);
+				double Y2 = rs.getDouble(5);
+				
+				System.out.println("X1 = " +X1);
+				
 				
 				double X3=X2-X1 ;
 				double fx = X3/height;
@@ -174,12 +180,11 @@ public class carte {
 				double Y4=fy*y;
 				double y_point = Y2 - Y4 ;
 				
-				int[] coord = new int[2] ;
-				int p_x = doubleToInt(x_point);
-				int p_y = doubleToInt(y_point);
+				double[] coord = new double[2] ;
+
 				
-				coord[0] = p_x ;
-				coord[1] = p_y ;
+				coord[0] = x_point ;
+				coord[1] = y_point ;
 				
 				
 				return coord;
@@ -209,26 +214,19 @@ public class carte {
 	      
 		public static void creerEtAfficherFenetre(String image) {
 	          JFrame fenetre = new JFrame("MiniSig");
-	          JPanel Panel2 = new JPanel();
+	         
 	          Map Panel3 = new Map( 756 , 546 ,image) ;
 	   
 	          Panel3.setLayout(null);
 	          
 	         JPanel Panel1 = new JPanel();
 	                         
-	          GridBagConstraints c2 = new GridBagConstraints();
-	          
-	          c2.gridx = 1;
-	          c2.gridy = 2;
-	          c2.ipadx =500;
-	          c2.ipady =500;
 	          
 	          
-	          Panel2.setPreferredSize(new Dimension(1200,1000));
 	          Panel1.setPreferredSize(new Dimension(1920,1080));
 	          
-	          Panel2.add(Panel3);
-	          Panel1.add(Panel2,c2);
+	          
+	          Panel1.add(Panel3);
 
 	          
 	          fenetre.setContentPane(Panel1);

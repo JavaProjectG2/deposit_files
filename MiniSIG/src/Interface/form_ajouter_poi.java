@@ -6,7 +6,13 @@
 
 package Interface;
 
+import javax.swing.JPanel;
+
+import CAD.Mapping;
+import Processus.Historique;
+import Processus.Map;
 import Processus.PI;
+import Processus.carte;
 
 /**
  *
@@ -14,13 +20,28 @@ import Processus.PI;
  */
 public class form_ajouter_poi extends javax.swing.JFrame {
 
+    private int Id_Map;
+    private double X;
+    private double Y;
+    private Map map;
     /**
      * Creates new form form_ajouter_poi
      */
     public form_ajouter_poi() {
         initComponents();
     }
-
+	public void setId_Map(int Id_Map){
+		this.Id_Map = Id_Map;
+	}
+	public int getId_Map(){
+		return Id_Map;
+	}
+	public void setMap(Map map){
+		this.map = map;
+	}
+	public Map getMap(){
+		return map;
+	}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -44,6 +65,7 @@ public class form_ajouter_poi extends javax.swing.JFrame {
         text_area_description = new javax.swing.JTextArea();
         boutton_ajouter = new javax.swing.JButton();
         boutton_annuler = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Ajout du P.I");
@@ -97,6 +119,14 @@ public class form_ajouter_poi extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Position");
+        jButton1.setActionCommand("Button_position");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -115,7 +145,10 @@ public class form_ajouter_poi extends javax.swing.JFrame {
                             .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(text_field_libelle, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(text_field_libelle, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(text_field_image, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(38, 38, 38)
@@ -133,10 +166,11 @@ public class form_ajouter_poi extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(text_field_libelle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(text_field_libelle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -151,7 +185,7 @@ public class form_ajouter_poi extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(label_image)
                     .addComponent(text_field_image, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -184,13 +218,27 @@ public class form_ajouter_poi extends javax.swing.JFrame {
     private void boutton_ajouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutton_ajouterActionPerformed
         // TODO add your handling code here:
         PI pi = new PI();
-        pi.Ajouter_PI(WIDTH);
+        
+        pi.setAbscisse(this.X);
+        pi.setOrdonee(this.Y);
+    	pi.setLibelle(this.text_field_libelle.getText());
+    	pi.setTexteCourt(this.text_area_texte_court.getText());
+    	pi.setDescription(this.text_area_description.getText());
+    	pi.setImage(this.text_field_image.getText());
+        pi.Ajouter_PI(Id_Map);
     }//GEN-LAST:event_boutton_ajouterActionPerformed
 
     private void boutton_annulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutton_annulerActionPerformed
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_boutton_annulerActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    	int[] Pos = map.Getpos();
+    	this.X=Pos[0];
+    	this.Y=Pos[1];
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -200,6 +248,7 @@ public class form_ajouter_poi extends javax.swing.JFrame {
     public javax.swing.JButton bouton_parcourir;
     private javax.swing.JButton boutton_ajouter;
     private javax.swing.JButton boutton_annuler;
+    private javax.swing.JButton jButton1;
     private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -211,7 +260,5 @@ public class form_ajouter_poi extends javax.swing.JFrame {
     private javax.swing.JTextArea text_area_texte_court;
     public javax.swing.JTextField text_field_image;
     private javax.swing.JTextField text_field_libelle;
-    public double x;
-    public double y;
     // End of variables declaration//GEN-END:variables
 }
