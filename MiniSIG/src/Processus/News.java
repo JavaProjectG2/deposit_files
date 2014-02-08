@@ -21,51 +21,61 @@ import CAD.Mapping;
 
 public class News {
     
-    private Mapping map = new Mapping();
-    private ResultSet result;
+    private static Mapping map = new Mapping();
+    private static ResultSet result;
     
     //creation jpanel contenant toutes les news sous la forme de liens hypertextes
-    public void DisplayPanelNews() throws SQLException {
-    	JPanel panNews = new JPanel();
+    public static void DisplayPanelNews(JPanel panNews) throws SQLException {
+    	//JPanel panNews = new JPanel();
     	
     	panNews.setLayout(new BoxLayout(panNews, BoxLayout.PAGE_AXIS));
+    	System.out.println("ok1");
     	
     	ArrayList<String> ListNews = ConsultNews();
+    	System.out.println("ok2");
+    	System.out.println(ListNews);
     	
     	for(String element : ListNews) {
+    		System.out.println("okloop");
     		JLabel labNews = new JLabel(element);
     		panNews.add(labNews);
     	}
     }
     
-    public void AddNews(String[] infosNews) { //les informations dans infosNews doivent etre dans lordre : Libelle_New, Description_New
+    public static void AddNews(String[] infosNews) { //les informations dans infosNews doivent etre dans lordre : Libelle_New, Description_New
         String[] nomCol = new String[2];
         
         nomCol[0] = "Libelle_New";
         nomCol[1] = "Description_New";
         
-        map.Insert("News", nomCol, infosNews);
+        map.Insert("new", nomCol, infosNews);
     }
     
-    public ArrayList<String> ConsultNews() throws SQLException { //recupere lensemble des news 
+    public static ArrayList<String> ConsultNews() throws SQLException { //recupere lensemble des news 
         
         ArrayList<String> ListNews = new ArrayList<String>();
         
-        result = map.Select("*", "News");
+        result = map.Select("Libelle_New, Description_New", "new");
+        System.out.println("ok10");
+        System.out.println("ok101");
         ResultSetMetaData resultMeta = result.getMetaData();
-        
-        for(int i=0; i<= resultMeta.getColumnCount(); i++) {
-            ListNews.add(result.getObject(i).toString());
+        System.out.println("ok102");
+        if(result.next()) {
+        	System.out.println("okif10");
+	        for(int i=1; i<= resultMeta.getColumnCount(); i++) {
+	        	System.out.println("okloop10"+i);
+	        	ListNews.add(result.getObject(i).toString());
+	        }
         }
         
         return ListNews; 
     }
     
-    public void modifyNews(String IDNews, String[] infosNews) { //les infos de infosNews doivent etre dans lordre : Libelle_New, Description_New et presentes comme dans une requete SQL
-        map.Update("News", IDNews, infosNews);
+    public static void modifyNews(String IDNews, String[] infosNews) { //les infos de infosNews doivent etre dans lordre : Libelle_New, Description_New et presentes comme dans une requete SQL
+        map.Update("new", IDNews, infosNews);
     }
     
-    public void DelNews(String IDNews) {
-        map.Delete("News", "ID_New = "+IDNews);
+    public static void DelNews(String IDNews) {
+        map.Delete("new", "ID_New = "+IDNews);
     }
 }

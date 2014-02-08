@@ -61,7 +61,7 @@ public class Mapping
     }
     public ResultSet Select(String champ, String table) {
         this.rq_sql = "SELECT "+champ+" FROM "+table+"";
-        
+        System.out.println(rq_sql);
         result = conn.m_GetRows(rq_sql);
         
         return result;
