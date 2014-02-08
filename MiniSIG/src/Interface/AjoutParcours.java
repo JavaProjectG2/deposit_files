@@ -1,5 +1,7 @@
 package Interface;
 
+import Processus.parcours;
+
 public class AjoutParcours extends javax.swing.JFrame {
     private String Libelle;
     private String TextCourt;
